@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/assets/compact-css/jquery.tablesorter.theme.bootstrap.css,jquery.tablesorter.pager.css">
+
+<div class="page-head">
+    <h2>Listar Membros da Banca</h2>
+</div>
+<div class="cl-mcont">
+
+    <br />
+    <div class="row" id="membrobanca-pagination"></div>
+</div>
+
+<script>
+    $(function () {
+
+        $.ajax({
+            type: "post",
+            dataType: "text",
+            cache: false,
+            url: '/membros_banca-membrosbanca/index-pagination',
+            async: true,
+            data: {
+            },
+            beforeSend: function () {
+
+                $('#membrobanca-pagination').html(
+                    '<div class="row"><div class="col-md-12 text-center"><p><img src="/assets/img/carregando.gif"><p></div></div>'
+                );
+            },
+            success: function (data) {
+
+                $('#membrobanca-pagination').html(data);
+            }
+        });
+
+    })
+</script>

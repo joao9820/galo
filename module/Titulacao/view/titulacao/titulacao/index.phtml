@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/assets/compact-css/jquery.tablesorter.theme.bootstrap.css,jquery.tablesorter.pager.css">
+
+<div class="page-head">
+    <h2>Lista de Titulações</h2>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-default" href="<?= $this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro')) ?>" title="Adicionar nova titulação">Nova Titulação</a>
+        </div>
+    </div>
+    <br />
+    <div class="row" id="titulacao-pagination"></div>
+</div>
+
+<script>
+    $(function () {
+
+        $.ajax({
+            type: "post",
+            dataType: "text",
+            cache: false,
+            url: '/titulacao-titulacao/index-pagination',
+            async: true,
+            data: {
+            },
+            beforeSend: function () {
+
+                $('#titulacao-pagination').html(
+                    '<div class="row"><div class="col-md-12 text-center"><p><img src="/assets/img/carregando.gif"><p></div></div>'
+                );
+            },
+            success: function (data) {
+
+                $('#titulacao-pagination').html(data);
+            }
+        });
+
+    })
+</script>
