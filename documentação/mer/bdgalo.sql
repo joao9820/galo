@@ -39,9 +39,9 @@ DROP TABLE IF EXISTS `action`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `action` (
   `id_action` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_action` varchar(200) DEFAULT NULL COMMENT '{"label":"A��o"}',
+  `nm_action` varchar(200) DEFAULT NULL COMMENT '{"label":"Ação"}',
   PRIMARY KEY (`id_action`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ CREATE TABLE `controller` (
   `nm_modulo` varchar(50) DEFAULT NULL,
   `cs_exibir_combo` char(1) DEFAULT 'S',
   PRIMARY KEY (`id_controller`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `controller` (
 
 LOCK TABLES `controller` WRITE;
 /*!40000 ALTER TABLE `controller` DISABLE KEYS */;
-INSERT INTO `controller` VALUES (1,'action-action','Actions','S'),(2,'application-index','Aplica��o','N'),(3,'controller-controller','Controller','S'),(4,'infra-infra','Infraestrutura','S'),(5,'perfil-perfil','Perfil','S'),(6,'permissao-permissao','Gerenciador de Permissao','S'),(7,'pesquisar-pesquisar','Pesquisar','S'),(8,'principal-principal','Principal','S'),(9,'usuario-usuario','Usuario','S');
+INSERT INTO `controller` VALUES (1,'action-action','Actions','S'),(2,'application-index','Aplicação','N'),(3,'controller-controller','Controller','S'),(4,'infra-infra','Infraestrutura','S'),(5,'perfil-perfil','Perfil','S'),(6,'permissao-permissao','Gerenciador de Permissao','S'),(7,'pesquisar-pesquisar','Pesquisar','S'),(8,'principal-principal','Principal','S'),(9,'usuario-usuario','Usuario','S'),(10,'solicitacao-solicitacao','Solicitacao','S'),(11,'fornecedor-fornecedor','Fornecedor','S'),(12,'equipe-equipe','Equipe','S'),(13,'departamento-departamento','Departamento','S'),(14,'funcao-funcao','Funcao','S'),(15,'status-status','Status','S'),(16,'tipo_servico-tiposervico','Tipo de Servico','S'),(17,'planejamento-planejamento','Planejamento','S'),(18,'cronograma-cronograma','Cronograma','S'),(19,'atendimento-atendimento','Atendimento','S');
 /*!40000 ALTER TABLE `controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,6 +209,7 @@ CREATE TABLE `departamento` (
 
 LOCK TABLES `departamento` WRITE;
 /*!40000 ALTER TABLE `departamento` DISABLE KEYS */;
+INSERT INTO `departamento` VALUES (1,'ASCOM'),(2,'CPS'),(3,'DAES'),(4,'DAF'),(5,'ECJUS-DIREÇÃO'),(6,'ECJUS-DIREITO'),(7,'ECJUS-SSOCIAL'),(8,'ECSAU-DIREÇÃO'),(9,'ECSAU-ED.FIS'),(10,'ECSAU-FISIO'),(11,'ECSAU-PSICO'),(12,'ENEG-ADM'),(13,'ENEG-CICO'),(14,'ENEG-CSPP'),(15,'ENEG-DIREÇÃO'),(16,'ENEG-GP'),(17,'ENEG-LOG'),(18,'ENEG-MKT'),(19,'ENEG-RH'),(20,'ENEG-SEB'),(21,'EPROF-DIREÇÃO'),(22,'EPROF-GEOGRAFIA'),(23,'EPROF-HISTORIA'),(24,'EPROF-LETRAS'),(25,'EPROF-MATEMATICA'),(26,'EPROF-PEDAGOGIA'),(27,'ETEC-DIREÇÃO'),(28,'ETEC-ENG'),(29,'ETEC-TI'),(30,'EXTERNO'),(31,'GALO CANTA'),(32,'INOVE'),(33,'NAM'),(34,'NAPS'),(35,'NDC'),(36,'NEX'),(37,'NPA'),(38,'NPJ'),(39,'POSGRAD');
 /*!40000 ALTER TABLE `departamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +228,7 @@ CREATE TABLE `email` (
   KEY `ix_emails_situacao` (`id_situacao`),
   CONSTRAINT `FK_Reference_32` FOREIGN KEY (`id_situacao`) REFERENCES `situacao` (`id_situacao`),
   CONSTRAINT `fk_emails_situacao` FOREIGN KEY (`id_situacao`) REFERENCES `situacao` (`id_situacao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +237,7 @@ CREATE TABLE `email` (
 
 LOCK TABLES `email` WRITE;
 /*!40000 ALTER TABLE `email` DISABLE KEYS */;
-INSERT INTO `email` VALUES (1,'administrador@gmail.com',1),(2,'alyssontkd@gmail.com',1),(16,'vanessa.coelho@projecao.br',1),(17,'testec@teste.com.br',1);
+INSERT INTO `email` VALUES (1,'administrador@gmail.com',1),(2,'alyssontkd@gmail.com',1),(3,'vanessa.coelho@projecao.br',1),(4,'testec@teste.com.br',1);
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,7 +251,7 @@ DROP TABLE IF EXISTS `endereco`;
 CREATE TABLE `endereco` (
   `id_endereco` int(11) NOT NULL AUTO_INCREMENT,
   `nm_logradouro` varchar(200) DEFAULT NULL COMMENT '{"label":"Logradouro"}',
-  `nr_numero` varchar(45) DEFAULT NULL COMMENT '{"label":"Número"}',
+  `nr_numero` varchar(45) DEFAULT NULL COMMENT '{"label":"NÃºmero"}',
   `nm_complemento` varchar(200) DEFAULT NULL COMMENT '{"label":"Complemento"}',
   `nm_bairro` varchar(200) DEFAULT NULL COMMENT '{"label":"Bairro"}',
   `nr_cep` varchar(8) DEFAULT NULL COMMENT '{"label":"Cep"}',
@@ -375,7 +376,7 @@ CREATE TABLE `estado` (
 
 LOCK TABLES `estado` WRITE;
 /*!40000 ALTER TABLE `estado` DISABLE KEYS */;
-INSERT INTO `estado` VALUES (1,'Acre','AC'),(2,'Alagoas','AL'),(3,'Amazonas','AM'),(4,'Amapá','AP'),(5,'Bahia','BA'),(6,'Ceará','CE'),(7,'Distrito Federal','DF'),(8,'Espírito Santo','ES'),(9,'Goiás','GO'),(10,'Maranhão','MA'),(11,'Minas Gerais','MG'),(12,'Mato Grosso do Sul','MS'),(13,'Mato Grosso','MT'),(14,'Pará','PA'),(15,'Paraíba','PB'),(16,'Pernambuco','PE'),(17,'Piauí','PI'),(18,'Paraná','PN'),(19,'Rio de Janeiro','RJ'),(20,'Rio Grande do Norte','RN'),(21,'Rondônia','RO'),(22,'Roraima','RR'),(23,'Rio Grande do Sul','RS'),(24,'Santa Catarina','SC'),(25,'Sergipe','SE'),(26,'São Paulo','SP'),(27,'Tocantins','TO');
+INSERT INTO `estado` VALUES (1,'Acre','AC'),(2,'Alagoas','AL'),(3,'Amazonas','AM'),(4,'AmapÃ¡','AP'),(5,'Bahia','BA'),(6,'CearÃ¡','CE'),(7,'Distrito Federal','DF'),(8,'EspÃ­rito Santo','ES'),(9,'GoiÃ¡s','GO'),(10,'MaranhÃ£o','MA'),(11,'Minas Gerais','MG'),(12,'Mato Grosso do Sul','MS'),(13,'Mato Grosso','MT'),(14,'ParÃ¡','PA'),(15,'ParaÃ­ba','PB'),(16,'Pernambuco','PE'),(17,'PiauÃ­','PI'),(18,'ParanÃ¡','PN'),(19,'Rio de Janeiro','RJ'),(20,'Rio Grande do Norte','RN'),(21,'RondÃ´nia','RO'),(22,'Roraima','RR'),(23,'Rio Grande do Sul','RS'),(24,'Santa Catarina','SC'),(25,'Sergipe','SE'),(26,'SÃ£o Paulo','SP'),(27,'Tocantins','TO');
 /*!40000 ALTER TABLE `estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,7 +481,7 @@ CREATE TABLE `login` (
   `id_Login` int(11) NOT NULL AUTO_INCREMENT,
   `pw_senha` varchar(40) DEFAULT NULL COMMENT '{"label":"Senha"}',
   `nr_tentativas` int(11) DEFAULT NULL COMMENT '{"label":"Tentativas"}',
-  `dt_visita` datetime DEFAULT NULL COMMENT '{"label":"Data da �ltima visita"}',
+  `dt_visita` datetime DEFAULT NULL COMMENT '{"label":"Data da última visita"}',
   `dt_registro` datetime DEFAULT NULL COMMENT '{"label":"Data de Registro"}',
   `id_usuario` int(11) NOT NULL,
   `id_email` int(11) NOT NULL,
@@ -496,7 +497,7 @@ CREATE TABLE `login` (
   CONSTRAINT `fk_Login_emails` FOREIGN KEY (`id_email`) REFERENCES `email` (`id_email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Login_situacao` FOREIGN KEY (`id_situacao`) REFERENCES `situacao` (`id_situacao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Login_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -505,7 +506,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'e10adc3949ba59abbe56e057f20f883e',1,'2014-08-27 21:53:33','2014-08-27 21:53:37',1,1,1,1),(2,'e10adc3949ba59abbe56e057f20f883e',NULL,NULL,'2015-01-30 15:01:11',2,2,1,1),(12,'25d55ad283aa400af464c76d713c07ad',NULL,NULL,'2016-10-22 11:10:28',13,16,2,2),(13,'25d55ad283aa400af464c76d713c07ad',NULL,NULL,'2017-10-23 21:10:44',14,17,2,2);
+INSERT INTO `login` VALUES (1,'e10adc3949ba59abbe56e057f20f883e',1,'2014-08-27 21:53:33','2014-08-27 21:53:37',1,1,1,1),(2,'e10adc3949ba59abbe56e057f20f883e',NULL,NULL,'2015-01-30 15:01:11',2,2,1,1),(3,'25d55ad283aa400af464c76d713c07ad',NULL,NULL,'2016-10-22 11:10:28',3,4,2,2),(4,'25d55ad283aa400af464c76d713c07ad',NULL,NULL,'2017-10-23 21:10:44',4,4,2,2);
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -520,7 +521,7 @@ CREATE TABLE `perfil` (
   `id_perfil` int(11) NOT NULL AUTO_INCREMENT COMMENT '{"label":"Id Perfil"}',
   `nm_perfil` varchar(100) NOT NULL COMMENT '{''label'':"Perfil"}',
   PRIMARY KEY (`id_perfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -529,7 +530,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Coordena��o'),(3,'Departamentos');
+INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Departamentos');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,7 +553,7 @@ CREATE TABLE `perfil_controller_action` (
   CONSTRAINT `fk_perfil_controller_action_action` FOREIGN KEY (`id_action`) REFERENCES `action` (`id_action`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_perfil_controller_action_controller` FOREIGN KEY (`id_controller`) REFERENCES `controller` (`id_controller`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_perfil_controller_action_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=656 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -561,7 +562,7 @@ CREATE TABLE `perfil_controller_action` (
 
 LOCK TABLES `perfil_controller_action` WRITE;
 /*!40000 ALTER TABLE `perfil_controller_action` DISABLE KEYS */;
-INSERT INTO `perfil_controller_action` VALUES (1,9,1,1),(2,2,1,1),(3,9,3,1),(4,9,6,1),(5,9,8,1),(6,2,1,2),(7,9,7,1),(8,9,12,1),(9,9,13,1),(10,9,1,1),(11,9,1,2),(12,9,2,1),(13,8,1,1),(14,5,1,1),(15,5,2,1),(16,5,3,1),(17,9,14,1),(18,3,1,1),(19,3,2,1),(20,3,3,1),(21,3,4,1),(22,3,14,1),(23,1,1,1),(24,1,2,1),(25,1,3,1),(26,1,4,1),(27,1,14,1),(28,6,1,1),(29,6,2,1),(30,6,3,1),(31,6,4,1),(32,6,14,1),(33,6,16,1),(34,4,1,1),(35,8,1,2),(36,8,1,3),(38,7,2,1),(39,7,4,1),(40,7,3,1),(41,7,1,1),(42,7,14,1),(43,7,19,1),(44,7,2,2),(45,7,4,2),(46,7,3,2),(47,7,1,2),(48,7,14,2),(49,7,19,2),(50,9,12,2),(51,9,7,2),(52,9,2,2),(53,9,6,2),(54,9,3,2),(55,9,8,2),(56,9,1,2),(57,9,14,2),(58,9,13,2);
+INSERT INTO `perfil_controller_action` VALUES (1,9,1,1),(2,2,1,1),(3,9,3,1),(4,9,6,1),(5,9,8,1),(6,2,1,2),(7,9,7,1),(8,9,12,1),(9,9,13,1),(10,9,1,1),(11,9,1,2),(12,9,2,1),(13,8,1,1),(14,5,1,1),(15,5,2,1),(16,5,3,1),(17,9,14,1),(18,3,1,1),(19,3,2,1),(20,3,3,1),(21,3,4,1),(22,3,14,1),(23,1,1,1),(24,1,2,1),(25,1,3,1),(26,1,4,1),(27,1,14,1),(28,6,1,1),(29,6,2,1),(30,6,3,1),(31,6,4,1),(32,6,14,1),(33,6,16,1),(34,4,1,1),(35,8,1,2),(36,8,1,3),(38,7,2,1),(39,7,4,1),(40,7,3,1),(41,7,1,1),(42,7,14,1),(43,7,19,1),(44,7,2,2),(45,7,4,2),(46,7,3,2),(47,7,1,2),(48,7,14,2),(49,7,19,2),(50,9,12,2),(51,9,7,2),(52,9,2,2),(53,9,6,2),(54,9,3,2),(55,9,8,2),(56,9,1,2),(57,9,14,2),(58,9,13,2),(59,19,2,1),(60,19,4,1),(61,19,3,1),(62,19,1,1),(63,19,14,1),(64,18,2,1),(65,18,4,1),(66,18,3,1),(67,18,1,1),(68,18,14,1),(69,13,2,1),(70,13,4,1),(71,13,3,1),(72,13,1,1),(73,13,14,1),(74,12,2,1),(75,12,4,1),(76,12,3,1),(77,12,1,1),(78,12,14,1),(79,11,2,1),(80,11,4,1),(81,11,3,1),(82,11,1,1),(83,11,14,1),(84,14,2,1),(85,14,4,1),(86,14,3,1),(87,14,1,1),(88,14,14,1),(89,17,2,1),(90,17,4,1),(91,17,3,1),(92,17,1,1),(93,17,14,1),(94,10,2,1),(95,10,4,1),(96,10,3,1),(97,10,1,1),(98,10,14,1),(99,15,2,1),(100,15,4,1),(101,15,3,1),(102,15,1,1),(103,15,14,1),(104,16,2,1),(105,16,4,1),(106,16,3,1),(107,16,1,1),(108,16,14,1);
 /*!40000 ALTER TABLE `perfil_controller_action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,7 +593,7 @@ CREATE TABLE `planejamento` (
   KEY `FK_Reference_49` (`id_cronograma`),
   CONSTRAINT `FK_Reference_36` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`),
   CONSTRAINT `FK_Reference_49` FOREIGN KEY (`id_cronograma`) REFERENCES `cronograma` (`id_cronograma`)
-) ENGINE=InnoDB AUTO_INCREMENT=656 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -637,7 +638,7 @@ DROP TABLE IF EXISTS `situacao`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `situacao` (
   `id_situacao` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_situacao` varchar(100) DEFAULT NULL COMMENT '{"label":"Situa��o"}',
+  `nm_situacao` varchar(100) DEFAULT NULL COMMENT '{"label":"Situação"}',
   PRIMARY KEY (`id_situacao`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -661,7 +662,7 @@ DROP TABLE IF EXISTS `situacao_usuario`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `situacao_usuario` (
   `id_situacao_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_situacao_usuario` varchar(100) DEFAULT NULL COMMENT '{"label":"Situa��o usu�rio"}',
+  `nm_situacao_usuario` varchar(100) DEFAULT NULL COMMENT '{"label":"Situação usuário"}',
   PRIMARY KEY (`id_situacao_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -692,6 +693,7 @@ CREATE TABLE `solicitacao` (
   `id_departamento` int(11) DEFAULT NULL,
   `id_usuario_cadastro` int(11) DEFAULT NULL,
   `id_status` int(11) DEFAULT NULL,
+  `id_unidade` int(11) DEFAULT NULL,
   `dt_data_criacao` datetime DEFAULT NULL,
   `dt_data_final_atendimento` datetime DEFAULT NULL,
   `tx_informacao` text,
@@ -703,12 +705,14 @@ CREATE TABLE `solicitacao` (
   KEY `FK_Reference_44` (`id_departamento`),
   KEY `FK_Reference_45` (`id_usuario_cadastro`),
   KEY `FK_Reference_50` (`id_status`),
+  KEY `FK_Reference_54_idx` (`id_unidade`),
   CONSTRAINT `FK_Reference_41` FOREIGN KEY (`id_telefone_fixo`) REFERENCES `telefone` (`id_telefone`),
   CONSTRAINT `FK_Reference_42` FOREIGN KEY (`id_telefone_celular`) REFERENCES `telefone` (`id_telefone`),
   CONSTRAINT `FK_Reference_43` FOREIGN KEY (`id_email`) REFERENCES `email` (`id_email`),
   CONSTRAINT `FK_Reference_44` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`),
   CONSTRAINT `FK_Reference_45` FOREIGN KEY (`id_usuario_cadastro`) REFERENCES `usuario` (`id_usuario`),
-  CONSTRAINT `FK_Reference_50` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`)
+  CONSTRAINT `FK_Reference_50` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`),
+  CONSTRAINT `FK_Reference_54` FOREIGN KEY (`id_unidade`) REFERENCES `unidade` (`id_unidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -760,7 +764,7 @@ CREATE TABLE `status` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `nm_status` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -769,6 +773,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
+INSERT INTO `status` VALUES (1,'Aprovado'),(2,'Atrasado'),(3,'Cancelado'),(4,'Concluído'),(5,'Em Aprovação'),(6,'Em Execução'),(7,'Em Produção'),(8,'No Planejamento'),(9,'Retornado para Ajustes');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -814,7 +819,7 @@ CREATE TABLE `tipo_servico` (
   `id_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
   `nm_tipo_servico` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_tipo_servico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -823,6 +828,7 @@ CREATE TABLE `tipo_servico` (
 
 LOCK TABLES `tipo_servico` WRITE;
 /*!40000 ALTER TABLE `tipo_servico` DISABLE KEYS */;
+INSERT INTO `tipo_servico` VALUES (1,'Banner 120x0,80'),(2,'Banner Digital'),(3,'Campanha Completa'),(4,'Cartaz A3'),(5,'Cartaz A4'),(6,'Faixa Horizontal'),(7,'Folder'),(8,'Identidade Visual(SIV/MIV)'),(9,'KitEvento 1 (FaixaHorizontal, Banner1.20x80cm, folder, bannerdigital)'),(10,'KitEvento 2 (Púlpito, Banner1.20x80cm, bannerdigital)'),(11,'KitEvento 3 (Púlpito, FaixaHorizontal, 1.20x80cm, cartazA3, folder, bannerdigital)'),(12,'KitEvento 4 (Púlpito, FaixaHorizontal, cartazA3, bannerdigital)'),(13,'Panfleto'),(14,'Púlpito'),(15,'Revista Digital'),(16,'Revista Impressa'),(17,'Vídeo Institucional'),(18,'Vinheta Animada');
 /*!40000 ALTER TABLE `tipo_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -859,7 +865,7 @@ DROP TABLE IF EXISTS `tipo_usuario`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_tipo_usuario` varchar(100) DEFAULT NULL COMMENT '{"label":"Tipo usu�rio"}',
+  `nm_tipo_usuario` varchar(100) DEFAULT NULL COMMENT '{"label":"Tipo usuário"}',
   PRIMARY KEY (`id_tipo_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -870,8 +876,32 @@ CREATE TABLE `tipo_usuario` (
 
 LOCK TABLES `tipo_usuario` WRITE;
 /*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
-INSERT INTO `tipo_usuario` VALUES (1,'Administrador'),(2,'Coordena��o'),(3,'Secretar�a');
+INSERT INTO `tipo_usuario` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Secretaría');
 /*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unidade`
+--
+
+DROP TABLE IF EXISTS `unidade`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unidade` (
+  `id_unidade` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_unidade` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_unidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unidade`
+--
+
+LOCK TABLES `unidade` WRITE;
+/*!40000 ALTER TABLE `unidade` DISABLE KEYS */;
+INSERT INTO `unidade` VALUES (1,'Uniprojeção - CAMPUS I'),(2,'Uniprojeção - CAMPUS II'),(3,'FacPro - Ceilandia'),(4,'FacPro - Guará'),(5,'FacPro - Sobradinho'),(6,'Colégio Projeção - Guará'),(7,'Colégio Projeção - Taguatinga'),(8,'Colégio Projeção - Tag.Norte'),(9,'CEPROJ');
+/*!40000 ALTER TABLE `unidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -883,8 +913,8 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_usuario` varchar(250) NOT NULL COMMENT '{"label":"Usu�rio"}',
-  `nm_funcao` varchar(200) DEFAULT NULL COMMENT '{"label":"Profiss�o"}',
+  `nm_usuario` varchar(250) NOT NULL COMMENT '{"label":"Usuário"}',
+  `nm_funcao` varchar(200) DEFAULT NULL COMMENT '{"label":"Profissão"}',
   `id_sexo` int(11) DEFAULT NULL,
   `id_perfil` int(11) DEFAULT NULL,
   `id_situacao_usuario` int(11) NOT NULL,
@@ -901,7 +931,7 @@ CREATE TABLE `usuario` (
   CONSTRAINT `fk_usuarios_sexo` FOREIGN KEY (`id_sexo`) REFERENCES `sexo` (`id_sexo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_usuarios_situacao_usuario` FOREIGN KEY (`id_situacao_usuario`) REFERENCES `situacao_usuario` (`id_situacao_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_usuarios_telefones` FOREIGN KEY (`id_telefone`) REFERENCES `telefone` (`id_telefone`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -910,7 +940,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Admin','Administrador',1,1,1,1,1),(2,'Alysson Vicuna de Oliveira',NULL,NULL,1,1,2,2),(13,'Vanessa Coelho','Coordenadora de Curso',2,2,1,16,17),(14,'Eduardo','Tester',1,2,1,17,18);
+INSERT INTO `usuario` VALUES (1,'Admin','Administrador',1,1,1,1,1),(2,'Alysson Vicuna de Oliveira','Administrador',1,1,1,2,2),(3,'Vanessa Coelho','Coordenadora de Curso',2,2,1,16,17),(4,'Eduardo','Desenvolvedor',1,2,1,17,18);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -967,4 +997,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-16 11:20:46
+-- Dump completed on 2018-08-16 18:30:24
