@@ -50,7 +50,7 @@ CREATE TABLE `action` (
 
 LOCK TABLES `action` WRITE;
 /*!40000 ALTER TABLE `action` DISABLE KEYS */;
-INSERT INTO `action` VALUES (1,'index'),(6,'cadastro'),(7,'gravar'),(8,'excluir'),(9,'upload'),(14,'dados-pessoais'),(15,'atualizar-dados'),(17,'gravar-atualizacao'),(27,'enviar-id'),(30,'ativar-id'),(35,'negar-id'),(36,'alterar-senha'),(37,'salvar-redefinicao-senha'),(51,'index-pagination'),(53,'detalhe-pagination'),(56,'listar-permissoes-acoes'),(58,'autocompleteprofessor'),(59,'gerar-relatorio-pdf'),(60,'cadastro-detalhe'),(61,'adicionar-palavrachavetcc'),(62,'listar-palavrachavetcc'),(63,'excluir-palavrachavetcc-via-tcc'),(64,'adicionar-concluintes'),(65,'listar-concluintes'),(66,'excluir-concluinte-via-tcc'),(67,'download-arquivo'),(68,'pesquisar'),(69,'realizar-pesquisa-tcc'),(70,'detalhes-filtros-pagination'),(71,'realizarinscricoes'),(72,'listar-professores'),(73,'adicionar-professores'),(74,'excluir-membrobanca-via-banca');
+INSERT INTO `action` VALUES (1,'index'),(2,'cadastro'),(3,'gravar'),(4,'excluir'),(5,'upload'),(6,'dados-pessoais'),(7,'atualizar-dados'),(8,'gravar-atualizacao'),(9,'enviar-id'),(10,'ativar-id'),(11,'negar-id'),(12,'alterar-senha'),(13,'salvar-redefinicao-senha'),(14,'index-pagination'),(15,'detalhe-pagination'),(16,'listar-permissoes-acoes'),(17,'gerar-relatorio-pdf'),(18,'download-arquivo'),(19,'pesquisar');
 /*!40000 ALTER TABLE `action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,31 +135,6 @@ INSERT INTO `cidade` VALUES (1,1,'Acrelandia'),(2,1,'Assis Brasil'),(3,1,'Brasil
 UNLOCK TABLES;
 
 --
--- Table structure for table `config`
---
-
-DROP TABLE IF EXISTS `config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `config` (
-  `idconfigs` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_config` varchar(200) DEFAULT NULL COMMENT '{"label":"Nome da Configuração"}',
-  `nm_valor` varchar(200) DEFAULT NULL COMMENT '{"label":"Valor"}',
-  PRIMARY KEY (`idconfigs`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `config`
---
-
-LOCK TABLES `config` WRITE;
-/*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (1,'valor_por','99.00'),(2,'valor_de','119.00'),(3,'agencia','0643'),(4,'op','013'),(5,'conta_corrente','782.632-8'),(6,'favorecido','Alysson Vicuña de Oliveira'),(7,'situacao_pagamento_pendente','1'),(8,'situacao_pagamento_atraso','3'),(9,'situacao_pagamento_pago','2'),(10,'situacao_ativo','1'),(11,'situacao_inativo','2'),(12,'tipo_pagamento_mensalidade','1'),(13,'tipo_usuario_administrador','1'),(14,'tipo_usuario_aluno','2'),(15,'situacao_usuario_ativo','1'),(16,'situacao_usuario_inativo','2'),(17,'situacao_usuario_congelado','3'),(19,'perfil_administrador','1'),(20,'perfil_aluno','3'),(21,'qtd_niveis','3'),(22,'qtd_por_nivel','5'),(23,'tipo_telefone_residencial','1'),(24,'tipo_telefone_comercial','2'),(25,'tipo_telefone_celular','3'),(26,'telefone_admin','6191123250'),(27,'email_admin','alyssontkd@gmail.com'),(28,'nome_admin','Alysson Vicuña de Oliveira'),(29,'telefone_cel_admin','61991123250'),(30,'tipo_pagamento_bonus','2'),(32,'tipo_pagamento_saque','3'),(33,'limite_minimo_saque','300'),(34,'situacao_usuario_atrasado','4'),(35,'situacao_empresa_contrato_ativo','1'),(36,'situacao_empresa_contrato_inativo','2'),(37,'situacao_empresa_contrato_congelado','3'),(38,'situacao_empresa_contrato_regusado','4'),(39,'situacao_solicitacao_empresa_recusado','3'),(40,'situacao_solicitacao_empresa_aprovado','2'),(41,'situacao_solicitacao_empresa_pendente','1'),(42,'codigo_video_apresentacao','UsSSUglRMAw'),(43,'link_conferencia','login.hotconference.net.br/conference'),(44,'cnpj','08.988.564/0001-30'),(45,'razao_social','MC DE SA LIMA EPP'),(46,'endereco','SIA TR 05 LT 05 35 SL 211 ED. IMPORT CENTER GUARA DISTRITO FEDERAL'),(47,'exibir_no_combo','S'),(48,'nao_exibir_no_combo','N'),(49,'masculino','1'),(50,'feminino','2'),(51,'perfil_professor','2');
-/*!40000 ALTER TABLE `config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `controller`
 --
 
@@ -181,7 +156,7 @@ CREATE TABLE `controller` (
 
 LOCK TABLES `controller` WRITE;
 /*!40000 ALTER TABLE `controller` DISABLE KEYS */;
-INSERT INTO `controller` VALUES (3,'usuario-usuario','Usuario','S'),(4,'application-index','Aplicação','N'),(11,'principal-principal','Principal','S'),(12,'perfil-perfil','Perfil','S'),(23,'tipo_tcc-tipotcc','Tipo de TCC','S'),(24,'area_conhecimento-areaconhecimento','Área de Conhecimento','S'),(25,'controller-controller','Controller','S'),(26,'action-action','Actions','S'),(27,'periodo_letivo-periodoletivo','Periodo Letivo','S'),(28,'detalhe_periodo_letivo','Detalhe Periodo Letivo (Encontros)','S'),(29,'permissao-permissao','Gerenciador de Permissao','S'),(30,'professor-professor','Professores','S'),(31,'curso-curso','Cursos','S'),(32,'banca_examinadora-bancaexaminadora','Banca Examinadora','S'),(36,'palavra_chave-palavrachave','Palavras Chave','S'),(37,'infra-infra','Infraestrutura','S'),(38,'palavra_chave_tcc-palavrachavetcc','Palavra Chave TCC','S'),(39,'concluinte-concluinte','Concluinte (Alunos Formandos)','S'),(40,'tcc-tcc','TCC','S'),(41,'titulacao-titulacao','Titulação','S'),(42,'pesquisar-pesquisar','Pesquisar','S');
+INSERT INTO `controller` VALUES (1,'action-action','Actions','S'),(2,'application-index','Aplicação','N'),(3,'controller-controller','Controller','S'),(4,'infra-infra','Infraestrutura','S'),(5,'perfil-perfil','Perfil','S'),(6,'permissao-permissao','Gerenciador de Permissao','S'),(7,'pesquisar-pesquisar','Pesquisar','S'),(8,'principal-principal','Principal','S'),(9,'usuario-usuario','Usuario','S');
 /*!40000 ALTER TABLE `controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -554,7 +529,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Secretaría');
+INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Departamentos');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -586,7 +561,7 @@ CREATE TABLE `perfil_controller_action` (
 
 LOCK TABLES `perfil_controller_action` WRITE;
 /*!40000 ALTER TABLE `perfil_controller_action` DISABLE KEYS */;
-INSERT INTO `perfil_controller_action` VALUES (3,3,1,1),(4,4,1,1),(20,3,7,1),(24,3,14,1),(27,3,17,1),(33,4,1,2),(62,3,15,1),(81,3,36,1),(83,3,37,1),(87,9,1,1),(88,9,1,2),(89,3,6,1),(93,11,1,1),(95,12,1,1),(96,12,6,1),(97,12,7,1),(164,23,1,1),(169,23,6,1),(170,23,7,1),(171,23,8,1),(172,23,9,1),(177,23,14,1),(178,23,15,1),(180,23,17,1),(190,23,27,1),(193,23,30,1),(198,23,35,1),(199,23,36,1),(200,23,37,1),(214,23,51,1),(215,24,1,1),(220,24,6,1),(221,24,7,1),(222,24,8,1),(223,24,9,1),(228,24,14,1),(229,24,15,1),(231,24,17,1),(241,24,27,1),(244,24,30,1),(249,24,35,1),(250,24,36,1),(251,24,37,1),(265,24,51,1),(266,3,51,1),(268,23,1,1),(269,23,6,1),(270,23,7,1),(271,23,8,1),(272,23,51,1),(273,25,1,1),(274,25,6,1),(275,25,7,1),(276,25,8,1),(277,25,51,1),(278,26,1,1),(279,26,6,1),(280,26,7,1),(281,26,8,1),(282,26,51,1),(283,27,1,1),(284,27,6,1),(285,27,7,1),(286,27,8,1),(287,27,51,1),(289,27,53,1),(313,29,1,1),(315,29,6,1),(316,29,7,1),(317,29,8,1),(318,29,51,1),(319,29,56,1),(351,31,1,1),(352,31,6,1),(353,31,7,1),(354,31,8,1),(355,31,51,1),(384,36,1,1),(385,36,6,1),(386,36,7,1),(387,36,8,1),(388,36,51,1),(389,37,1,1),(390,11,1,2),(391,11,1,3),(392,11,1,4),(401,38,1,1),(402,38,6,1),(403,38,7,1),(404,38,8,1),(405,38,9,1),(406,38,51,1),(407,39,1,1),(408,39,6,1),(409,39,7,1),(410,39,8,1),(411,39,51,1),(418,30,1,1),(419,30,6,1),(420,30,7,1),(421,30,8,1),(422,30,51,1),(423,30,58,1),(424,30,59,1),(438,40,1,1),(439,40,6,1),(440,40,7,1),(441,40,8,1),(442,40,9,1),(443,40,51,1),(444,40,60,1),(445,40,61,1),(446,40,62,1),(447,40,63,1),(448,40,64,1),(449,40,65,1),(450,40,66,1),(451,40,67,1),(452,41,1,1),(453,41,6,1),(454,41,7,1),(455,41,8,1),(456,41,51,1),(457,41,1,2),(458,41,6,2),(459,41,7,2),(460,41,8,2),(461,41,9,2),(462,41,51,2),(499,42,6,1),(500,42,70,1),(501,42,8,1),(502,42,7,1),(503,42,1,1),(504,42,51,1),(505,42,68,1),(506,42,69,1),(553,32,73,1),(554,32,58,1),(555,32,6,1),(556,32,60,1),(557,32,53,1),(558,32,8,1),(559,32,74,1),(560,32,7,1),(561,32,1,1),(562,32,51,1),(563,32,72,1),(564,32,71,1),(573,24,6,2),(574,24,27,2),(575,24,8,2),(576,24,7,2),(577,24,17,2),(578,24,1,2),(579,24,51,2),(580,24,35,2),(581,32,73,2),(582,32,58,2),(583,32,6,2),(584,32,60,2),(585,32,53,2),(586,32,8,2),(587,32,74,2),(588,32,7,2),(589,32,1,2),(590,32,51,2),(591,32,72,2),(592,32,71,2),(593,39,6,2),(594,39,8,2),(595,39,7,2),(596,39,1,2),(597,39,51,2),(598,31,6,2),(599,31,8,2),(600,31,7,2),(601,31,1,2),(602,31,51,2),(603,38,6,2),(604,38,8,2),(605,38,7,2),(606,38,1,2),(607,38,51,2),(608,36,6,2),(609,36,8,2),(610,36,7,2),(611,36,1,2),(612,36,51,2),(613,42,6,2),(614,42,70,2),(615,42,8,2),(616,42,7,2),(617,42,1,2),(618,42,51,2),(619,42,68,2),(620,42,69,2),(621,30,58,2),(622,30,6,2),(623,30,8,2),(624,30,59,2),(625,30,7,2),(626,30,1,2),(627,30,51,2),(628,40,64,2),(629,40,61,2),(630,40,6,2),(631,40,60,2),(632,40,67,2),(633,40,8,2),(634,40,66,2),(635,40,63,2),(636,40,7,2),(637,40,1,2),(638,40,51,2),(639,40,65,2),(640,40,62,2),(641,40,9,2),(642,23,6,2),(643,23,8,2),(644,23,7,2),(645,23,1,2),(646,23,51,2),(647,3,36,2),(648,3,15,2),(649,3,6,2),(650,3,14,2),(651,3,7,2),(652,3,17,2),(653,3,1,2),(654,3,51,2),(655,3,37,2);
+INSERT INTO `perfil_controller_action` VALUES (1,9,1,1),(2,2,1,1),(3,9,3,1),(4,9,6,1),(5,9,8,1),(6,2,1,2),(7,9,7,1),(8,9,12,1),(9,9,13,1),(10,9,1,1),(11,9,1,2),(12,9,2,1),(13,8,1,1),(14,5,1,1),(15,5,2,1),(16,5,3,1),(17,9,14,1),(18,3,1,1),(19,3,2,1),(20,3,3,1),(21,3,4,1),(22,3,14,1),(23,1,1,1),(24,1,2,1),(25,1,3,1),(26,1,4,1),(27,1,14,1),(28,6,1,1),(29,6,2,1),(30,6,3,1),(31,6,4,1),(32,6,14,1),(33,6,16,1),(34,4,1,1),(35,8,1,2),(36,8,1,3),(38,7,2,1),(39,7,4,1),(40,7,3,1),(41,7,1,1),(42,7,14,1),(43,7,19,1),(44,7,2,2),(45,7,4,2),(46,7,3,2),(47,7,1,2),(48,7,14,2),(49,7,19,2),(50,9,12,2),(51,9,7,2),(52,9,2,2),(53,9,6,2),(54,9,3,2),(55,9,8,2),(56,9,1,2),(57,9,14,2),(58,9,13,2);
 /*!40000 ALTER TABLE `perfil_controller_action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -992,4 +967,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15 17:32:47
+-- Dump completed on 2018-08-16 11:20:46

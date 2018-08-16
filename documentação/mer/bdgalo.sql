@@ -1,9 +1,10 @@
-/*==============================================================*/
-/* Database name:  bdgalo                                       */
-/* DBMS name:      dump 10.13  Distrib 5.7.9, for Win64 (x86_64)*/
-/* Created on:     15/08/2018 11:41:29                          */
-/* Host: 127.0.0.1    Database: bdgalo*/
-/*==============================================================*/
+CREATE DATABASE  IF NOT EXISTS `bdgalo` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `bdgalo`;
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: bdgalo
+-- ------------------------------------------------------
+-- Server version	5.7.11-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,17 +17,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-/*==============================================================*/
-/* Database: bdgalo                                             */
-/*==============================================================*/
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `bdgalo` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `bdgalo`;
-
-/*==============================================================*/
-/* Table: acl                                                */
-/*==============================================================*/
+--
+-- Temporary view structure for view `acl`
+--
 
 DROP TABLE IF EXISTS `acl`;
 /*!50001 DROP VIEW IF EXISTS `acl`*/;
@@ -37,9 +30,10 @@ SET character_set_client = utf8;
  1 AS `nm_resource`*/;
 SET character_set_client = @saved_cs_client;
 
-/*==============================================================*/
-/* Table: action                                                */
-/*==============================================================*/
+--
+-- Table structure for table `action`
+--
+
 DROP TABLE IF EXISTS `action`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -56,39 +50,67 @@ CREATE TABLE `action` (
 
 LOCK TABLES `action` WRITE;
 /*!40000 ALTER TABLE `action` DISABLE KEYS */;
-INSERT INTO `action` VALUES (1,'index'),(6,'cadastro'),(7,'gravar'),(8,'excluir'),(9,'upload'),(14,'dados-pessoais'),(15,'atualizar-dados'),(17,'gravar-atualizacao'),(27,'enviar-id'),(30,'ativar-id'),(35,'negar-id'),(36,'alterar-senha'),(37,'salvar-redefinicao-senha'),(51,'index-pagination'),(53,'detalhe-pagination'),(56,'listar-permissoes-acoes'),(58,'autocompleteprofessor'),(59,'gerar-relatorio-pdf'),(60,'cadastro-detalhe'),(61,'adicionar-palavrachavetcc'),(62,'listar-palavrachavetcc'),(63,'excluir-palavrachavetcc-via-tcc'),(64,'adicionar-concluintes'),(65,'listar-concluintes'),(66,'excluir-concluinte-via-tcc'),(67,'download-arquivo'),(68,'pesquisar'),(69,'realizar-pesquisa-tcc'),(70,'detalhes-filtros-pagination'),(71,'realizarinscricoes'),(72,'listar-professores'),(73,'adicionar-professores'),(74,'excluir-membrobanca-via-banca');
+INSERT INTO `action` VALUES (1,'index'),(2,'cadastro'),(3,'gravar'),(4,'excluir'),(5,'upload'),(6,'dados-pessoais'),(7,'atualizar-dados'),(8,'gravar-atualizacao'),(9,'enviar-id'),(10,'ativar-id'),(11,'negar-id'),(12,'alterar-senha'),(13,'salvar-redefinicao-senha'),(14,'index-pagination'),(15,'detalhe-pagination'),(16,'listar-permissoes-acoes'),(17,'gerar-relatorio-pdf'),(18,'download-arquivo'),(19,'pesquisar');
 /*!40000 ALTER TABLE `action` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: atendimento                                           */
-/*==============================================================*/
+--
+-- Table structure for table `atendimento`
+--
+
 DROP TABLE IF EXISTS `atendimento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `atendimento`(
-   `id_atendimento`       bigint not null AUTO_INCREMENT,
-   `nm_atendente`         varchar(150),
-   `nm_supervisor`        varchar(150),
-   `nm_diretor_arte`      varchar(150),
-   `nm_redator`           varchar(150),
-   `tx_objetivo`          text,
-   `nr_sla_atendimento`   datetime,
-   `nm_target`            varchar(150),
-   `nm_conceito`          varchar(150),
-   `nm_verba_estimada`    varchar(150),
-   `ar_arquivo`           varchar(200),
-   `tx_informacao_complementar` text,
-   `id_solicitacao`       bigint NOT NULL,
-   primary key (`id_atendimento`),
-   KEY `FK_Reference_35` (`id_solicitacao`),
-   CONSTRAINT FK_Reference_35 FOREIGN KEY (id_solicitacao)
-   REFERENCES solicitacao (id_solicitacao)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `atendimento` (
+  `id_atendimento` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nm_atendente` varchar(150) DEFAULT NULL,
+  `nm_supervisor` varchar(150) DEFAULT NULL,
+  `nm_diretor_arte` varchar(150) DEFAULT NULL,
+  `nm_redator` varchar(150) DEFAULT NULL,
+  `tx_objetivo` text,
+  `nr_sla_atendimento` datetime DEFAULT NULL,
+  `nm_target` varchar(150) DEFAULT NULL,
+  `nm_conceito` varchar(150) DEFAULT NULL,
+  `nm_verba_estimada` varchar(150) DEFAULT NULL,
+  `ar_arquivo` varchar(200) DEFAULT NULL,
+  `tx_informacao_complementar` text,
+  `id_solicitacao` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_atendimento`),
+  KEY `FK_Reference_35` (`id_solicitacao`),
+  CONSTRAINT `FK_Reference_35` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: cidade                                                */
-/*==============================================================*/
+--
+-- Dumping data for table `atendimento`
+--
+
+LOCK TABLES `atendimento` WRITE;
+/*!40000 ALTER TABLE `atendimento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `atendimento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `auth`
+--
+
+DROP TABLE IF EXISTS `auth`;
+/*!50001 DROP VIEW IF EXISTS `auth`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `auth` AS SELECT 
+ 1 AS `id_usuario`,
+ 1 AS `id_perfil`,
+ 1 AS `em_email`,
+ 1 AS `pw_senha`,
+ 1 AS `nm_usuario`,
+ 1 AS `id_contrato`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `cidade`
+--
+
 DROP TABLE IF EXISTS `cidade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -112,33 +134,10 @@ INSERT INTO `cidade` VALUES (1,1,'Acrelandia'),(2,1,'Assis Brasil'),(3,1,'Brasil
 /*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: config                                                */
-/*==============================================================*/
-DROP TABLE IF EXISTS `config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `config` (
-  `idconfigs` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_config` varchar(200) DEFAULT NULL COMMENT '{"label":"Nome da Configuração"}',
-  `nm_valor` varchar(200) DEFAULT NULL COMMENT '{"label":"Valor"}',
-  PRIMARY KEY (`idconfigs`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `config`
+-- Table structure for table `controller`
 --
 
-LOCK TABLES `config` WRITE;
-/*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (1,'valor_por','99.00'),(2,'valor_de','119.00'),(3,'agencia','0643'),(4,'op','013'),(5,'conta_corrente','782.632-8'),(6,'favorecido','Alysson Vicuña de Oliveira'),(7,'situacao_pagamento_pendente','1'),(8,'situacao_pagamento_atraso','3'),(9,'situacao_pagamento_pago','2'),(10,'situacao_ativo','1'),(11,'situacao_inativo','2'),(12,'tipo_pagamento_mensalidade','1'),(13,'tipo_usuario_administrador','1'),(14,'tipo_usuario_aluno','2'),(15,'situacao_usuario_ativo','1'),(16,'situacao_usuario_inativo','2'),(17,'situacao_usuario_congelado','3'),(19,'perfil_administrador','1'),(20,'perfil_aluno','3'),(21,'qtd_niveis','3'),(22,'qtd_por_nivel','5'),(23,'tipo_telefone_residencial','1'),(24,'tipo_telefone_comercial','2'),(25,'tipo_telefone_celular','3'),(26,'telefone_admin','6191123250'),(27,'email_admin','alyssontkd@gmail.com'),(28,'nome_admin','Alysson Vicuña de Oliveira'),(29,'telefone_cel_admin','61991123250'),(30,'tipo_pagamento_bonus','2'),(32,'tipo_pagamento_saque','3'),(33,'limite_minimo_saque','300'),(34,'situacao_usuario_atrasado','4'),(35,'situacao_empresa_contrato_ativo','1'),(36,'situacao_empresa_contrato_inativo','2'),(37,'situacao_empresa_contrato_congelado','3'),(38,'situacao_empresa_contrato_regusado','4'),(39,'situacao_solicitacao_empresa_recusado','3'),(40,'situacao_solicitacao_empresa_aprovado','2'),(41,'situacao_solicitacao_empresa_pendente','1'),(42,'codigo_video_apresentacao','UsSSUglRMAw'),(43,'link_conferencia','login.hotconference.net.br/conference'),(44,'cnpj','08.988.564/0001-30'),(45,'razao_social','MC DE SA LIMA EPP'),(46,'endereco','SIA TR 05 LT 05 35 SL 211 ED. IMPORT CENTER GUARA DISTRITO FEDERAL'),(47,'exibir_no_combo','S'),(48,'nao_exibir_no_combo','N'),(49,'masculino','1'),(50,'feminino','2'),(51,'perfil_professor','2');
-/*!40000 ALTER TABLE `config` ENABLE KEYS */;
-UNLOCK TABLES;
-
-/*==============================================================*/
-/* Table: controller                                            */
-/*==============================================================*/
 DROP TABLE IF EXISTS `controller`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -157,44 +156,66 @@ CREATE TABLE `controller` (
 
 LOCK TABLES `controller` WRITE;
 /*!40000 ALTER TABLE `controller` DISABLE KEYS */;
-INSERT INTO `controller` VALUES (3,'usuario-usuario','Usuario','S'),(4,'application-index','Aplicação','N'),(11,'principal-principal','Principal','S'),(12,'perfil-perfil','Perfil','S'),(23,'tipo_tcc-tipotcc','Tipo de TCC','S'),(24,'area_conhecimento-areaconhecimento','Área de Conhecimento','S'),(25,'controller-controller','Controller','S'),(26,'action-action','Actions','S'),(27,'periodo_letivo-periodoletivo','Periodo Letivo','S'),(28,'detalhe_periodo_letivo','Detalhe Periodo Letivo (Encontros)','S'),(29,'permissao-permissao','Gerenciador de Permissao','S'),(30,'professor-professor','Professores','S'),(31,'curso-curso','Cursos','S'),(32,'banca_examinadora-bancaexaminadora','Banca Examinadora','S'),(36,'palavra_chave-palavrachave','Palavras Chave','S'),(37,'infra-infra','Infraestrutura','S'),(38,'palavra_chave_tcc-palavrachavetcc','Palavra Chave TCC','S'),(39,'concluinte-concluinte','Concluinte (Alunos Formandos)','S'),(40,'tcc-tcc','TCC','S'),(41,'titulacao-titulacao','Titulação','S'),(42,'pesquisar-pesquisar','Pesquisar','S');
+INSERT INTO `controller` VALUES (1,'action-action','Actions','S'),(2,'application-index','Aplicação','N'),(3,'controller-controller','Controller','S'),(4,'infra-infra','Infraestrutura','S'),(5,'perfil-perfil','Perfil','S'),(6,'permissao-permissao','Gerenciador de Permissao','S'),(7,'pesquisar-pesquisar','Pesquisar','S'),(8,'principal-principal','Principal','S'),(9,'usuario-usuario','Usuario','S');
 /*!40000 ALTER TABLE `controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: cronograma                                            */
-/*==============================================================*/
+--
+-- Table structure for table `cronograma`
+--
+
 DROP TABLE IF EXISTS `cronograma`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `cronograma`(
-   `id_cronograma`        bigint not null AUTO_INCREMENT,
-   `nm_acao`              varchar(150),
-   `dt_data_inicio`       datetime,
-   `dt_data_fim`          datetime,
-   `id_equipe`            bigint,
-   `ar_arquivo`           varchar(200),
-   PRIMARY KEY (`id_cronograma`),   
-   KEY `FK_Reference_51` (`id_equipe`),
-   CONSTRAINT `FK_Reference_51` FOREIGN KEY (`id_equipe`) 
-   REFERENCES `equipe` (`id_equipe`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `cronograma` (
+  `id_cronograma` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nm_acao` varchar(150) DEFAULT NULL,
+  `dt_data_inicio` datetime DEFAULT NULL,
+  `dt_data_fim` datetime DEFAULT NULL,
+  `id_equipe` bigint(20) DEFAULT NULL,
+  `ar_arquivo` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id_cronograma`),
+  KEY `FK_Reference_51` (`id_equipe`),
+  CONSTRAINT `FK_Reference_51` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: departamento                                          */
-/*==============================================================*/
+--
+-- Dumping data for table `cronograma`
+--
+
+LOCK TABLES `cronograma` WRITE;
+/*!40000 ALTER TABLE `cronograma` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cronograma` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `departamento`
+--
+
 DROP TABLE IF EXISTS `departamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `departamento`(
-   `id_departamento`      int(11) not null,
-   `nm_departamento`      varchar(150),
-   primary key (`id_departamento`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `departamento` (
+  `id_departamento` int(11) NOT NULL,
+  `nm_departamento` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_departamento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: email                                                 */
-/*==============================================================*/
+--
+-- Dumping data for table `departamento`
+--
+
+LOCK TABLES `departamento` WRITE;
+/*!40000 ALTER TABLE `departamento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `departamento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `email`
+--
+
 DROP TABLE IF EXISTS `email`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -219,9 +240,10 @@ INSERT INTO `email` VALUES (1,'administrador@gmail.com',1),(2,'alyssontkd@gmail.
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: endereco                                              */
-/*==============================================================*/
+--
+-- Table structure for table `endereco`
+--
+
 DROP TABLE IF EXISTS `endereco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -249,38 +271,61 @@ INSERT INTO `endereco` VALUES (1,'Rua sem nome casa S/N','08','Perto do Terminal
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: equipe                                                */
-/*==============================================================*/
+--
+-- Table structure for table `equipe`
+--
+
 DROP TABLE IF EXISTS `equipe`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table equipe(
-   `id_equipe`            bigint not null AUTO_INCREMENT,
-   `nm_responsavel`       varchar(150),
-   primary key (`id_equipe`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `equipe` (
+  `id_equipe` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nm_responsavel` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_equipe`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: equipe_funcao                                         */
-/*==============================================================*/
+--
+-- Dumping data for table `equipe`
+--
+
+LOCK TABLES `equipe` WRITE;
+/*!40000 ALTER TABLE `equipe` DISABLE KEYS */;
+/*!40000 ALTER TABLE `equipe` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `equipe_funcao`
+--
+
 DROP TABLE IF EXISTS `equipe_funcao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `equipe_funcao`(
-   `id_equipe_funcao`     bigint not null AUTO_INCREMENT,
-   `id_equipe`            bigint,
-   `id_funcao`            bigint,
-   primary key (`id_equipe_funcao`),
-   KEY `FK_Reference_52` (`id_equipe`),
-   KEY `FK_Reference_53` (`id_funcao`),
-   CONSTRAINT `FK_Reference_52` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
-   CONSTRAINT `FK_Reference_53` FOREIGN KEY (`id_funcao`) REFERENCES `funcao` (`id_funcao`)  
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `equipe_funcao` (
+  `id_equipe_funcao` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_equipe` bigint(20) DEFAULT NULL,
+  `id_funcao` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_equipe_funcao`),
+  KEY `FK_Reference_52` (`id_equipe`),
+  KEY `FK_Reference_53` (`id_funcao`),
+  CONSTRAINT `FK_Reference_52` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
+  CONSTRAINT `FK_Reference_53` FOREIGN KEY (`id_funcao`) REFERENCES `funcao` (`id_funcao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: esqueci_senha                                         */
-/*==============================================================*/
+--
+-- Dumping data for table `equipe_funcao`
+--
+
+LOCK TABLES `equipe_funcao` WRITE;
+/*!40000 ALTER TABLE `equipe_funcao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `equipe_funcao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `esqueci_senha`
+--
+
 DROP TABLE IF EXISTS `esqueci_senha`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -294,9 +339,8 @@ CREATE TABLE `esqueci_senha` (
   PRIMARY KEY (`id_esqueci_senha`),
   KEY `fk_esqueci_senha_usuarios1` (`id_usuario`),
   KEY `fk_esqueci_senha_situacoes1` (`id_situacao`),
-  CONSTRAINT `fk_esqueci_senha_usuarios1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  CONSTRAINT `fk_esqueci_senha_situacoes1` FOREIGN KEY (`id_situacao`) REFERENCES `situacao` (`id_situacao`)
-
+  CONSTRAINT `fk_esqueci_senha_situacoes1` FOREIGN KEY (`id_situacao`) REFERENCES `situacao` (`id_situacao`),
+  CONSTRAINT `fk_esqueci_senha_usuarios1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -310,9 +354,10 @@ INSERT INTO `esqueci_senha` VALUES (1,1,'9cbf6bab3c6b428fafd6ebd7965df386',1,'20
 /*!40000 ALTER TABLE `esqueci_senha` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: estado                                                */
-/*==============================================================*/
+--
+-- Table structure for table `estado`
+--
+
 DROP TABLE IF EXISTS `estado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -334,66 +379,100 @@ INSERT INTO `estado` VALUES (1,'Acre','AC'),(2,'Alagoas','AL'),(3,'Amazonas','AM
 /*!40000 ALTER TABLE `estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: fornecedor                                            */
-/*==============================================================*/
+--
+-- Table structure for table `fornecedor`
+--
+
 DROP TABLE IF EXISTS `fornecedor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `fornecedor`(
-   `id_fornecedor`        int(11) not null AUTO_INCREMENT,
-   `nm_fornecedor`        varchar(150),
-   `nm_contato_fornecedor` varchar(150),
-   `nr_CNPJ`              int(14),
-   `nr_inscr_estadual`    int(11),
-   `nm_website`           varchar(150),
-   `id_telefone_fixo`     int(11),
-   `id_telefone_celular`  int(11),
-   `id_email`             int(11),
-   `id_endereco`          int(11),
-   primary key (`id_fornecedor`),
-   KEY `FK_Reference_34` (`id_endereco`),
-   KEY `FK_Reference_37` (`id_telefone_fixo`),
-   KEY `FK_Reference_38` (`id_telefone_celular`),
-   KEY `FK_Reference_39` (`id_email`),
-   CONSTRAINT `FK_Reference_34` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`id_endereco`),
-   CONSTRAINT `FK_Reference_37` FOREIGN KEY (`id_telefone_fixo`) REFERENCES `telefone` (`id_telefone`),
-   CONSTRAINT `FK_Reference_38` FOREIGN KEY (`id_telefone_celular`) REFERENCES `telefone` (`id_telefone`),
-   CONSTRAINT `FK_Reference_39` FOREIGN KEY (`id_email`) REFERENCES `email` (`id_email`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `fornecedor` (
+  `id_fornecedor` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_fornecedor` varchar(150) DEFAULT NULL,
+  `nm_contato_fornecedor` varchar(150) DEFAULT NULL,
+  `nr_CNPJ` int(14) DEFAULT NULL,
+  `nr_inscr_estadual` int(11) DEFAULT NULL,
+  `nm_website` varchar(150) DEFAULT NULL,
+  `id_telefone_fixo` int(11) DEFAULT NULL,
+  `id_telefone_celular` int(11) DEFAULT NULL,
+  `id_email` int(11) DEFAULT NULL,
+  `id_endereco` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_fornecedor`),
+  KEY `FK_Reference_34` (`id_endereco`),
+  KEY `FK_Reference_37` (`id_telefone_fixo`),
+  KEY `FK_Reference_38` (`id_telefone_celular`),
+  KEY `FK_Reference_39` (`id_email`),
+  CONSTRAINT `FK_Reference_34` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`id_endereco`),
+  CONSTRAINT `FK_Reference_37` FOREIGN KEY (`id_telefone_fixo`) REFERENCES `telefone` (`id_telefone`),
+  CONSTRAINT `FK_Reference_38` FOREIGN KEY (`id_telefone_celular`) REFERENCES `telefone` (`id_telefone`),
+  CONSTRAINT `FK_Reference_39` FOREIGN KEY (`id_email`) REFERENCES `email` (`id_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: fornecedor_tipo_servico                               */
-/*==============================================================*/
+--
+-- Dumping data for table `fornecedor`
+--
+
+LOCK TABLES `fornecedor` WRITE;
+/*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fornecedor_tipo_servico`
+--
+
 DROP TABLE IF EXISTS `fornecedor_tipo_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `fornecedor_tipo_servico`(
-   `id_fornecedor_tipo_servico` int(11) not null AUTO_INCREMENT,
-   `id_fornecedor`        int(11),
-   `id_tipo_servico`      int(11),
-   primary key (`id_fornecedor_tipo_servico`),
-   KEY `FK_Reference_40` (`id_fornecedor`),
-   KEY `FK_Reference_48` (`id_tipo_servico`),
-   CONSTRAINT `FK_Reference_40` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`),
-   CONSTRAINT `FK_Reference_48` FOREIGN KEY (`id_tipo_servico`) REFERENCES `tipo_servico` (`id_tipo_servico`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `fornecedor_tipo_servico` (
+  `id_fornecedor_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
+  `id_fornecedor` int(11) DEFAULT NULL,
+  `id_tipo_servico` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_fornecedor_tipo_servico`),
+  KEY `FK_Reference_40` (`id_fornecedor`),
+  KEY `FK_Reference_48` (`id_tipo_servico`),
+  CONSTRAINT `FK_Reference_40` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`),
+  CONSTRAINT `FK_Reference_48` FOREIGN KEY (`id_tipo_servico`) REFERENCES `tipo_servico` (`id_tipo_servico`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: funcao                                                */
-/*==============================================================*/
+--
+-- Dumping data for table `fornecedor_tipo_servico`
+--
+
+LOCK TABLES `fornecedor_tipo_servico` WRITE;
+/*!40000 ALTER TABLE `fornecedor_tipo_servico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fornecedor_tipo_servico` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `funcao`
+--
+
 DROP TABLE IF EXISTS `funcao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `funcao`(
-   `id_funcao`            bigint not null AUTO_INCREMENT,
-   `nm_funcao`            varchar(150),
-   primary key (`id_funcao`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `funcao` (
+  `id_funcao` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nm_funcao` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_funcao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: login                                                 */
-/*==============================================================*/
+--
+-- Dumping data for table `funcao`
+--
+
+LOCK TABLES `funcao` WRITE;
+/*!40000 ALTER TABLE `funcao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `funcao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
 DROP TABLE IF EXISTS `login`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -430,9 +509,10 @@ INSERT INTO `login` VALUES (1,'e10adc3949ba59abbe56e057f20f883e',1,'2014-08-27 2
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: perfil                                                */
-/*==============================================================*/
+--
+-- Table structure for table `perfil`
+--
+
 DROP TABLE IF EXISTS `perfil`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -449,13 +529,14 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Secretaría');
+INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Departamentos');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: perfil_controller_action                              */
-/*==============================================================*/
+--
+-- Table structure for table `perfil_controller_action`
+--
+
 DROP TABLE IF EXISTS `perfil_controller_action`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -480,43 +561,53 @@ CREATE TABLE `perfil_controller_action` (
 
 LOCK TABLES `perfil_controller_action` WRITE;
 /*!40000 ALTER TABLE `perfil_controller_action` DISABLE KEYS */;
-INSERT INTO `perfil_controller_action` VALUES (3,3,1,1),(4,4,1,1),(20,3,7,1),(24,3,14,1),(27,3,17,1),(33,4,1,2),(62,3,15,1),(81,3,36,1),(83,3,37,1),(87,9,1,1),(88,9,1,2),(89,3,6,1),(93,11,1,1),(95,12,1,1),(96,12,6,1),(97,12,7,1),(164,23,1,1),(169,23,6,1),(170,23,7,1),(171,23,8,1),(172,23,9,1),(177,23,14,1),(178,23,15,1),(180,23,17,1),(190,23,27,1),(193,23,30,1),(198,23,35,1),(199,23,36,1),(200,23,37,1),(214,23,51,1),(215,24,1,1),(220,24,6,1),(221,24,7,1),(222,24,8,1),(223,24,9,1),(228,24,14,1),(229,24,15,1),(231,24,17,1),(241,24,27,1),(244,24,30,1),(249,24,35,1),(250,24,36,1),(251,24,37,1),(265,24,51,1),(266,3,51,1),(268,23,1,1),(269,23,6,1),(270,23,7,1),(271,23,8,1),(272,23,51,1),(273,25,1,1),(274,25,6,1),(275,25,7,1),(276,25,8,1),(277,25,51,1),(278,26,1,1),(279,26,6,1),(280,26,7,1),(281,26,8,1),(282,26,51,1),(283,27,1,1),(284,27,6,1),(285,27,7,1),(286,27,8,1),(287,27,51,1),(289,27,53,1),(313,29,1,1),(315,29,6,1),(316,29,7,1),(317,29,8,1),(318,29,51,1),(319,29,56,1),(351,31,1,1),(352,31,6,1),(353,31,7,1),(354,31,8,1),(355,31,51,1),(384,36,1,1),(385,36,6,1),(386,36,7,1),(387,36,8,1),(388,36,51,1),(389,37,1,1),(390,11,1,2),(391,11,1,3),(392,11,1,4),(401,38,1,1),(402,38,6,1),(403,38,7,1),(404,38,8,1),(405,38,9,1),(406,38,51,1),(407,39,1,1),(408,39,6,1),(409,39,7,1),(410,39,8,1),(411,39,51,1),(418,30,1,1),(419,30,6,1),(420,30,7,1),(421,30,8,1),(422,30,51,1),(423,30,58,1),(424,30,59,1),(438,40,1,1),(439,40,6,1),(440,40,7,1),(441,40,8,1),(442,40,9,1),(443,40,51,1),(444,40,60,1),(445,40,61,1),(446,40,62,1),(447,40,63,1),(448,40,64,1),(449,40,65,1),(450,40,66,1),(451,40,67,1),(452,41,1,1),(453,41,6,1),(454,41,7,1),(455,41,8,1),(456,41,51,1),(457,41,1,2),(458,41,6,2),(459,41,7,2),(460,41,8,2),(461,41,9,2),(462,41,51,2),(499,42,6,1),(500,42,70,1),(501,42,8,1),(502,42,7,1),(503,42,1,1),(504,42,51,1),(505,42,68,1),(506,42,69,1),(553,32,73,1),(554,32,58,1),(555,32,6,1),(556,32,60,1),(557,32,53,1),(558,32,8,1),(559,32,74,1),(560,32,7,1),(561,32,1,1),(562,32,51,1),(563,32,72,1),(564,32,71,1),(573,24,6,2),(574,24,27,2),(575,24,8,2),(576,24,7,2),(577,24,17,2),(578,24,1,2),(579,24,51,2),(580,24,35,2),(581,32,73,2),(582,32,58,2),(583,32,6,2),(584,32,60,2),(585,32,53,2),(586,32,8,2),(587,32,74,2),(588,32,7,2),(589,32,1,2),(590,32,51,2),(591,32,72,2),(592,32,71,2),(593,39,6,2),(594,39,8,2),(595,39,7,2),(596,39,1,2),(597,39,51,2),(598,31,6,2),(599,31,8,2),(600,31,7,2),(601,31,1,2),(602,31,51,2),(603,38,6,2),(604,38,8,2),(605,38,7,2),(606,38,1,2),(607,38,51,2),(608,36,6,2),(609,36,8,2),(610,36,7,2),(611,36,1,2),(612,36,51,2),(613,42,6,2),(614,42,70,2),(615,42,8,2),(616,42,7,2),(617,42,1,2),(618,42,51,2),(619,42,68,2),(620,42,69,2),(621,30,58,2),(622,30,6,2),(623,30,8,2),(624,30,59,2),(625,30,7,2),(626,30,1,2),(627,30,51,2),(628,40,64,2),(629,40,61,2),(630,40,6,2),(631,40,60,2),(632,40,67,2),(633,40,8,2),(634,40,66,2),(635,40,63,2),(636,40,7,2),(637,40,1,2),(638,40,51,2),(639,40,65,2),(640,40,62,2),(641,40,9,2),(642,23,6,2),(643,23,8,2),(644,23,7,2),(645,23,1,2),(646,23,51,2),(647,3,36,2),(648,3,15,2),(649,3,6,2),(650,3,14,2),(651,3,7,2),(652,3,17,2),(653,3,1,2),(654,3,51,2),(655,3,37,2);
+INSERT INTO `perfil_controller_action` VALUES (1,9,1,1),(2,2,1,1),(3,9,3,1),(4,9,6,1),(5,9,8,1),(6,2,1,2),(7,9,7,1),(8,9,12,1),(9,9,13,1),(10,9,1,1),(11,9,1,2),(12,9,2,1),(13,8,1,1),(14,5,1,1),(15,5,2,1),(16,5,3,1),(17,9,14,1),(18,3,1,1),(19,3,2,1),(20,3,3,1),(21,3,4,1),(22,3,14,1),(23,1,1,1),(24,1,2,1),(25,1,3,1),(26,1,4,1),(27,1,14,1),(28,6,1,1),(29,6,2,1),(30,6,3,1),(31,6,4,1),(32,6,14,1),(33,6,16,1),(34,4,1,1),(35,8,1,2),(36,8,1,3),(38,7,2,1),(39,7,4,1),(40,7,3,1),(41,7,1,1),(42,7,14,1),(43,7,19,1),(44,7,2,2),(45,7,4,2),(46,7,3,2),(47,7,1,2),(48,7,14,2),(49,7,19,2),(50,9,12,2),(51,9,7,2),(52,9,2,2),(53,9,6,2),(54,9,3,2),(55,9,8,2),(56,9,1,2),(57,9,14,2),(58,9,13,2);
 /*!40000 ALTER TABLE `perfil_controller_action` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: planejamento                                          */
-/*==============================================================*/
+--
+-- Table structure for table `planejamento`
+--
+
 DROP TABLE IF EXISTS `planejamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `planejamento`(
-   `id_planejamento`      bigint not null AUTO_INCREMENT,
-   `nm_problema`          varchar(150),
-   `nm_recurso`           varchar(150),
-   `tx_analise_swot`      text,
-   `nm_avaliacao`         varchar(150),
-   `nm_acao`              varchar(150),
-   `nm_estrategia`        varchar(150),
-   `nm_abordagem`         varchar(150),
-   `nm_slogan`            varchar(150),
-   `nm_tom_campanha`      varchar(150),
-   `tx_peca`              text,
-   `ar_arquivo`           varchar(200),
-   `id_solicitacao`       bigint,
-   `id_cronograma`        bigint,
-   primary key (`id_planejamento`),
-   KEY `FK_Reference_36` (`id_solicitacao`),
-   KEY `FK_Reference_49` (`id_cronograma`),
-   CONSTRAINT `FK_Reference_36` FOREIGN KEY (`id_solicitacao`) 
-   REFERENCES `solicitacao` (`id_solicitacao`),   
-   CONSTRAINT `FK_Reference_49` FOREIGN KEY (`id_cronograma`) 
-   REFERENCES `cronograma` (`id_cronograma`)
-)ENGINE=InnoDB AUTO_INCREMENT=656 DEFAULT CHARSET=utf8;
+CREATE TABLE `planejamento` (
+  `id_planejamento` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nm_problema` varchar(150) DEFAULT NULL,
+  `nm_recurso` varchar(150) DEFAULT NULL,
+  `tx_analise_swot` text,
+  `nm_avaliacao` varchar(150) DEFAULT NULL,
+  `nm_acao` varchar(150) DEFAULT NULL,
+  `nm_estrategia` varchar(150) DEFAULT NULL,
+  `nm_abordagem` varchar(150) DEFAULT NULL,
+  `nm_slogan` varchar(150) DEFAULT NULL,
+  `nm_tom_campanha` varchar(150) DEFAULT NULL,
+  `tx_peca` text,
+  `ar_arquivo` varchar(200) DEFAULT NULL,
+  `id_solicitacao` bigint(20) DEFAULT NULL,
+  `id_cronograma` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_planejamento`),
+  KEY `FK_Reference_36` (`id_solicitacao`),
+  KEY `FK_Reference_49` (`id_cronograma`),
+  CONSTRAINT `FK_Reference_36` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`),
+  CONSTRAINT `FK_Reference_49` FOREIGN KEY (`id_cronograma`) REFERENCES `cronograma` (`id_cronograma`)
+) ENGINE=InnoDB AUTO_INCREMENT=656 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: sexo                                                  */
-/*==============================================================*/
+--
+-- Dumping data for table `planejamento`
+--
+
+LOCK TABLES `planejamento` WRITE;
+/*!40000 ALTER TABLE `planejamento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `planejamento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sexo`
+--
+
 DROP TABLE IF EXISTS `sexo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -537,9 +628,10 @@ INSERT INTO `sexo` VALUES (1,'Masculino'),(2,'Feminino');
 /*!40000 ALTER TABLE `sexo` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: situacao                                              */
-/*==============================================================*/
+--
+-- Table structure for table `situacao`
+--
+
 DROP TABLE IF EXISTS `situacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -560,9 +652,10 @@ INSERT INTO `situacao` VALUES (1,'Ativo'),(2,'Inativo');
 /*!40000 ALTER TABLE `situacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: situacao_usuario                                      */
-/*==============================================================*/
+--
+-- Table structure for table `situacao_usuario`
+--
+
 DROP TABLE IF EXISTS `situacao_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -583,77 +676,106 @@ INSERT INTO `situacao_usuario` VALUES (1,'Ativo'),(2,'Inativo'),(3,'Congelado'),
 /*!40000 ALTER TABLE `situacao_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: solicitacao                                           */
-/*==============================================================*/
+--
+-- Table structure for table `solicitacao`
+--
+
 DROP TABLE IF EXISTS `solicitacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `solicitacao`(
-   `id_solicitacao`       bigint not null AUTO_INCREMENT,
-   `nm_solicitante`       varchar(150),
-   `id_telefone_fixo`     int(11),
-   `id_telefone_celular`  int(11),
-   `id_email`             int(11),
-   `id_departamento`      int(11),
-   `id_usuario_cadastro`  int(11),
-   `id_status`            int(11),
-   `dt_data_criacao`      datetime,
-   `dt_data_final_atendimento` datetime,
-   `tx_informacao`        text,
-   `nr_controle`          int(11),
-   primary key (`id_solicitacao`),
-   KEY `FK_Reference_41` (`id_telefone_fixo`),
-   KEY `FK_Reference_42` (`id_telefone_celular`),   
-   KEY `FK_Reference_43` (`id_email`),
-   KEY `FK_Reference_44` (`id_departamento`),
-   KEY `FK_Reference_45` (`id_usuario_cadastro`),
-   KEY `FK_Reference_50` (`id_status`),
-   CONSTRAINT `FK_Reference_41` FOREIGN KEY (`id_telefone_fixo`) REFERENCES `telefone` (`id_telefone`),
-   CONSTRAINT `FK_Reference_42` FOREIGN KEY (`id_telefone_celular`) REFERENCES `telefone` (`id_telefone`),   
-   CONSTRAINT `FK_Reference_43` FOREIGN KEY (`id_email`) REFERENCES `email` (`id_email`),
-   CONSTRAINT `FK_Reference_44` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`),
-   CONSTRAINT `FK_Reference_45` FOREIGN KEY (`id_usuario_cadastro`) REFERENCES `usuario` (`id_usuario`),
-   CONSTRAINT `FK_Reference_50` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `solicitacao` (
+  `id_solicitacao` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nm_solicitante` varchar(150) DEFAULT NULL,
+  `id_telefone_fixo` int(11) DEFAULT NULL,
+  `id_telefone_celular` int(11) DEFAULT NULL,
+  `id_email` int(11) DEFAULT NULL,
+  `id_departamento` int(11) DEFAULT NULL,
+  `id_usuario_cadastro` int(11) DEFAULT NULL,
+  `id_status` int(11) DEFAULT NULL,
+  `dt_data_criacao` datetime DEFAULT NULL,
+  `dt_data_final_atendimento` datetime DEFAULT NULL,
+  `tx_informacao` text,
+  `nr_controle` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_solicitacao`),
+  KEY `FK_Reference_41` (`id_telefone_fixo`),
+  KEY `FK_Reference_42` (`id_telefone_celular`),
+  KEY `FK_Reference_43` (`id_email`),
+  KEY `FK_Reference_44` (`id_departamento`),
+  KEY `FK_Reference_45` (`id_usuario_cadastro`),
+  KEY `FK_Reference_50` (`id_status`),
+  CONSTRAINT `FK_Reference_41` FOREIGN KEY (`id_telefone_fixo`) REFERENCES `telefone` (`id_telefone`),
+  CONSTRAINT `FK_Reference_42` FOREIGN KEY (`id_telefone_celular`) REFERENCES `telefone` (`id_telefone`),
+  CONSTRAINT `FK_Reference_43` FOREIGN KEY (`id_email`) REFERENCES `email` (`id_email`),
+  CONSTRAINT `FK_Reference_44` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`),
+  CONSTRAINT `FK_Reference_45` FOREIGN KEY (`id_usuario_cadastro`) REFERENCES `usuario` (`id_usuario`),
+  CONSTRAINT `FK_Reference_50` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: solicitacao_tipo_servico                              */
-/*==============================================================*/
+--
+-- Dumping data for table `solicitacao`
+--
+
+LOCK TABLES `solicitacao` WRITE;
+/*!40000 ALTER TABLE `solicitacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `solicitacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `solicitacao_tipo_servico`
+--
+
 DROP TABLE IF EXISTS `solicitacao_tipo_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `solicitacao_tipo_servico`(
-   `id_solicitacao_tipo_servico` int(11) not null,
-   `id_solicitacao`       bigint(11),
-   `id_tipo_servico`      int(11),
-   primary key (`id_solicitacao_tipo_servico`),
-   KEY `FK_Reference_46` (`id_solicitacao`),
-   KEY `FK_Reference_47` (`id_tipo_servico`),
-   CONSTRAINT `FK_Reference_46` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`),
-   CONSTRAINT `FK_Reference_47` FOREIGN KEY (`id_tipo_servico`) REFERENCES `tipo_servico` (`id_tipo_servico`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `solicitacao_tipo_servico` (
+  `id_solicitacao_tipo_servico` int(11) NOT NULL,
+  `id_solicitacao` bigint(11) DEFAULT NULL,
+  `id_tipo_servico` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_solicitacao_tipo_servico`),
+  KEY `FK_Reference_46` (`id_solicitacao`),
+  KEY `FK_Reference_47` (`id_tipo_servico`),
+  CONSTRAINT `FK_Reference_46` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`),
+  CONSTRAINT `FK_Reference_47` FOREIGN KEY (`id_tipo_servico`) REFERENCES `tipo_servico` (`id_tipo_servico`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `solicitacao_tipo_servico`
+--
 
+LOCK TABLES `solicitacao_tipo_servico` WRITE;
+/*!40000 ALTER TABLE `solicitacao_tipo_servico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `solicitacao_tipo_servico` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `status`
+--
 
-/*==============================================================*/
-/* Table: status                                                */
-/*==============================================================*/
 DROP TABLE IF EXISTS `status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `status`(
-   `id_status`            int(11) not null AUTO_INCREMENT,
-   `nm_status`            varchar(150),
-   primary key (`id_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `status` (
+  `id_status` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_status` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: telefone                                              */
-/*==============================================================*/
+--
+-- Dumping data for table `status`
+--
+
+LOCK TABLES `status` WRITE;
+/*!40000 ALTER TABLE `status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `telefone`
+--
+
 DROP TABLE IF EXISTS `telefone`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -681,21 +803,33 @@ INSERT INTO `telefone` VALUES (1,'12','34567890',1,1),(2,'61','91613193',1,1),(1
 /*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: tipo_servico                                          */
-/*==============================================================*/
+--
+-- Table structure for table `tipo_servico`
+--
+
 DROP TABLE IF EXISTS `tipo_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-create table `tipo_servico`(
-   `id_tipo_servico`     int(11) not null AUTO_INCREMENT,
-   `nm_tipo_servico`      varchar(150),
-   primary key (`id_tipo_servico`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `tipo_servico` (
+  `id_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_tipo_servico` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_tipo_servico`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-/*==============================================================*/
-/* Table: tipo_telefone                                         */
-/*==============================================================*/
+--
+-- Dumping data for table `tipo_servico`
+--
+
+LOCK TABLES `tipo_servico` WRITE;
+/*!40000 ALTER TABLE `tipo_servico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tipo_servico` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipo_telefone`
+--
+
 DROP TABLE IF EXISTS `tipo_telefone`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -716,9 +850,10 @@ INSERT INTO `tipo_telefone` VALUES (1,'Residencial'),(2,'Comercial'),(3,'Celular
 /*!40000 ALTER TABLE `tipo_telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: tipo_usuario                                          */
-/*==============================================================*/
+--
+-- Table structure for table `tipo_usuario`
+--
+
 DROP TABLE IF EXISTS `tipo_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -739,9 +874,10 @@ INSERT INTO `tipo_usuario` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Secr
 /*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*==============================================================*/
-/* Table: usuario                                               */
-/*==============================================================*/
+--
+-- Table structure for table `usuario`
+--
+
 DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -777,6 +913,14 @@ LOCK TABLES `usuario` WRITE;
 INSERT INTO `usuario` VALUES (1,'Admin','Administrador',1,1,1,1,1),(2,'Alysson Vicuna de Oliveira',NULL,NULL,1,1,2,2),(13,'Vanessa Coelho','Coordenadora de Curso',2,2,1,16,17),(14,'Eduardo','Tester',1,2,1,17,18);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'bdgalo'
+--
+
+--
+-- Dumping routines for database 'bdgalo'
+--
 
 --
 -- Final view structure for view `acl`
@@ -823,6 +967,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-23 23:55:37
-
-
+-- Dump completed on 2018-08-16 11:20:46
