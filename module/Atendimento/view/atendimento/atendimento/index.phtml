@@ -1,43 +1,40 @@
-<?php
-  /** @var $form \Atendimento\Form\Atendimento */
-  /** @var $lista \Atendimento\Service\Atendimento[] */
-?>
+<link rel="stylesheet" href="/assets/compact-css/jquery.tablesorter.theme.bootstrap.css,jquery.tablesorter.pager.css">
+
 <div class="page-head">
-    <h2>Lista</h2>
+    <h2>Status de Atendimento</h2>
 </div>
 <div class="cl-mcont">
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-default" href="<?=$this->url('navegacao',array('controller'=>$controller,'action'=>'cadastro'))?>">Novo</a>
+            <a class="btn btn-default" href="<?= $this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro')) ?>" title="Adicionar um novo Atendimento">Novo Atendimento</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="block-flat">
-                <div class="content">
-
-                    <table class="table table-bordered dataTable">
-                        <thead>
-                            <tr>
-                                
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php foreach($lista as $item){ ?>
-                            <tr>
-                                                                
-                                <td style="width: 150px;">
-                                    <?=\Estrutura\Service\HtmlHelper::botaoAlterar($this->url('navegacao',array('controller'=>$controller,'action'=>'cadastro','id'=>Estrutura\Helpers\Cript::enc($item->getId()))))?>
-                                    <?=\Estrutura\Service\HtmlHelper::botaoExcluir($this->url('navegacao',array('controller'=>$controller,'action'=>'excluir','id'=>Estrutura\Helpers\Cript::enc($item->getId()))))?>
-                                </td>
-                            </tr>
-                        <?php }; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>    
+    <br />
+    <div class="row" id="atendimento-pagination"></div>
 </div>
+
+<script>
+    $(function () {
+
+        $.ajax({
+            type: "post",
+            dataType: "text",
+            cache: false,
+            url: '/atendimento-atendimento/index-pagination',
+            async: true,
+            data: {
+            },
+            beforeSend: function () {
+
+                $('#atendimento-pagination').html(
+                    '<div class="row"><div class="col-md-12 text-center"><p><img src="/assets/img/carregando.gif"><p></div></div>'
+                );
+            },
+            success: function (data) {
+
+                $('#atendimento-pagination').html(data);
+            }
+        });
+
+    })
+</script>

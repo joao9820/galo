@@ -3,6 +3,8 @@
 namespace Atendimento\Controller;
 
 use Estrutura\Controller\AbstractCrudController;
+use Estrutura\Helpers\Cript;
+use Zend\View\Model\ViewModel;
 
 class AtendimentoController extends AbstractCrudController
 {
@@ -22,8 +24,59 @@ class AtendimentoController extends AbstractCrudController
 
     public function indexAction()
     {
-        return parent::index($this->service, $this->form);
+        return new ViewModel([
+            'service' => $this->service,
+            'form' => $this->form,
+            'controller' => $this->params('controller'),
+            'atributos' => array()
+        ]);
     }
+
+    public function indexPaginationAction()
+    {
+        $filter = $this->getFilterPage();
+
+        $camposFilter = [
+            '0' => NULL,
+            '1' => [
+                'filter' => "atendimento.nm_atendente LIKE ?",
+            ],
+            '2' => [
+                'filter' => "atendimento.nm_diretor_arte LIKE ?",
+            ],
+            '3' => [
+                'filter' => "atendimento.nm_redator LIKE ?",
+            ],
+            '4' => NULL,
+        ];
+
+
+        $paginator = $this->service->getAtendimentoPaginator($filter, $camposFilter);
+
+        $paginator->setItemCountPerPage($paginator->getTotalItemCount());
+
+        $countPerPage = $this->getCountPerPage(
+            current(\Estrutura\Helpers\Pagination::getCountPerPage($paginator->getTotalItemCount()))
+        );
+
+        $paginator->setItemCountPerPage($this->getCountPerPage(
+            current(\Estrutura\Helpers\Pagination::getCountPerPage($paginator->getTotalItemCount()))
+        ))->setCurrentPageNumber($this->getCurrentPage());
+
+        $viewModel = new ViewModel([
+            'service' => $this->service,
+            'form' => $this->form,
+            'paginator' => $paginator,
+            'filter' => $filter,
+            'countPerPage' => $countPerPage,
+            'camposFilter' => $camposFilter,
+            'controller' => $this->params('controller'),
+            'atributos' => array()
+        ]);
+
+        return $viewModel->setTerminal(TRUE);
+    }
+
 
     public function gravarAction(){
         return parent::gravar($this->service, $this->form);
@@ -31,16 +84,7 @@ class AtendimentoController extends AbstractCrudController
 
     public function cadastroAction()
     {
-        
-        if ($result = parent::gravar($this->service, $this->form);) {
-            
-            $this->addSuccessMessage('Registro salvo com sucesso!');
-            $this->redirect()->toRoute('navegacao', array(
-                'controller' => $controller, 
-                'action' => 'index')
-            );
-        }
-        return $result;
+        return parent::cadastro($this->service, $this->form);
     }
 
     public function excluirAction()

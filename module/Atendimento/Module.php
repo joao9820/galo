@@ -1,13 +1,12 @@
 <?php
 namespace Atendimento;
-
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
 class Module
 {
     /**
-     * 
+     *
      */
     public function onBootstrap(MvcEvent $e)
     {
@@ -17,7 +16,7 @@ class Module
     }
 
     /**
-     * 
+     *
      */
     public function getConfig()
     {
@@ -25,7 +24,7 @@ class Module
     }
 
     /**
-     * 
+     *
      */
     public function getAutoloaderConfig()
     {
@@ -37,9 +36,9 @@ class Module
             ),
         );
     }
-    
+
     /**
-     * 
+     *
      * @return array
      */
     public function getServiceConfig()
@@ -47,7 +46,7 @@ class Module
         return array(
             'factories' => array(
                 'Atendimento\Service\AtendimentoService' => function($sm) {
-            
+
                     return new \Atendimento\Service\AtendimentoService();
                 },
             )

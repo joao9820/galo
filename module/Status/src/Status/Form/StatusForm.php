@@ -13,6 +13,10 @@ class StatusForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('statusform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_status")->required(true)->label("Nome do Status");
+
+
         $this->formObject = $objForm;
     }
 
