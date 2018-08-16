@@ -23,26 +23,45 @@
             <li class="active"><a href="/principal-principal">Início</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Cadastros
+                    Gestão
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/tcc-tcc">Trabalhos Tcc</a></li>
-                    <li><a href="/area_conhecimento-areaconhecimento">Área de Conhecimento</a></li>
-                    <li><a href="/banca_examinadora-bancaexaminadora">Bancas Examinadora</a></li>
-                    <li><a href="/palavra_chave-palavrachave">Palavra Chave</a></li>
-                    <!--                    <li><a href="/membros_banca-membrosbanca">Membros Banca</a></li>-->
-                    <!--                    <li><a href="/palavra_chave_tcc-palavrachavetcc">Palavra Chave TCC</a></li>-->
-                    <li class="divider"></li>
-                    <li><a href="/professor-professor">Professores</a></li>
-                    <li><a href="/titulacao-titulacao">Titulação</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/concluinte-concluinte">Alunos</a></li>
-                    <li><a href="/curso-curso">Cursos</a></li>
-
+                    <li><a href="/solicitacao-solicitacao">Solicitações</a></li>
+                    <li><a href="/fornecedor-fornecedor">Fornecedores</a></li>
                 </ul>
             </li>
-            <li><a href="/pesquisar-pesquisar">Pesquisar</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Relatórios
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/" style="color: lightcoral">Inat - Relatórios Gerais</a></li>
+                    <li><a href="/" style="color: lightcoral">Inat - Gráficos</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Básico
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/equipe-equipe">Equipe</a></li>
+                    <li><a href="/departamento-departamento" >Departamentos</a></li>
+                    <li><a href="/funcao-funcao">Função</a></li>
+                    <li><a href="/status-status">Status</a></li>
+                    <li><a href="/tipo_servico-tiposervico">Tipo de Serviços</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/planejamento-planejamento" style="color: blue">Temp. Planejamento</a></li>
+                    <li><a href="/cronograma-cronograma" style="color: blue">Temp. Cronograma</a></li>
+                    <li><a href="/atendimento-atendimento" style="color: blue">Temp. Atendimento</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/usuario-usuario">Usuários</a></li>
+                    <li><a href="/perfil-perfil">Perfis</a></li>
+                </ul>
+
+            </li>
 
             </li>
             <?php
@@ -61,22 +80,8 @@
                     </ul>
 
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Básico
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-
-                        <li><a href="/usuario-usuario">Usuários</a></li>
-                        <li><a href="/perfil-perfil">Perfis</a></li>
-                    </ul>
-
-                </li>
             <?php } ?>
-
         </ul>
-
         <?php if ($this->Auth()->id_perfil == TXT_CONST_PERFIL_ADMINISTRADOR) { ?>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -86,7 +91,6 @@
                 </li>
             </ul>
         <?php } ?>
-
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <!--            <a href="/mcnetwork-index">-->
