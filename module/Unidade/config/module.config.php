@@ -3,26 +3,15 @@
 return array(
     'router' => array(
         'routes' => array(
-            'atendimento' => array(
-                'type'    => 'Segment',
+            'unidade-home' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route'    => '/atendimento/:action[/:id][/:aux]',
+                    'route'    => '/unidade',
                     'defaults' => array(
-                        'controller' => 'atendimento',
+                        'controller' => 'unidade',
                         'action'     => 'index',
                     ),
                 ),
-            ),
-            'atendimento-atendimento' => array(
-                'type'    => 'Segment',
-                'options' => array(
-                    'route'    => '/atendimento-atendimento/:action[/:id][/:aux]',
-                    'defaults' => array(
-                        'controller' => 'atendimento-atendimento',
-                        'action'     => 'index',
-                    ),
-                ),
-
             ),
         ),
     ),
@@ -47,8 +36,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'atendimento' => 'Atendimento\Controller\AtendimentoController',
-            'atendimento-atendimento' => 'Atendimento\Controller\AtendimentoController',
+            'unidade' => 'Unidade\Controller\UnidadeController',
+            'unidade-unidade' => 'Unidade\Controller\UnidadeController',
 
         ),
     ),
