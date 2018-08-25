@@ -37,7 +37,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'tipo_servico' => 'TipoServico\Controller\TipoServicoController',
-            'tipo_servico-tiposervico' => 'Tipo_servico\Controller\TiposervicoController',
+            'tipo_servico-tiposervico' => 'TipoServico\Controller\TipoServicoController',
 
         ),
     ),

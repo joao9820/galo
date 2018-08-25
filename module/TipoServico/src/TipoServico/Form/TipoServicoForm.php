@@ -13,6 +13,9 @@ class TipoServicoForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('tiposervicoform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_tipo_servico")->required(true)->label("Nome do tipo de Serviço");
+
         $this->formObject = $objForm;
     }
 
