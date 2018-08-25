@@ -10,7 +10,7 @@ class DepartamentoTable extends AbstractEstruturaTable{
     public $campos = [
 
         'id_departamento'  => 'id',
-        'nm_atendente' => 'nm_departamento',
+        'nm_departamento' => 'nm_departamento',
 
     ];
 

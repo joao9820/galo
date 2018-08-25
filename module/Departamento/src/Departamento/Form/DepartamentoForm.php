@@ -13,6 +13,9 @@ class DepartamentoForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('departamentoform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_departamento")->required(true)->label("Nome do Departamento");
+
         $this->formObject = $objForm;
     }
 
