@@ -147,7 +147,7 @@ CREATE TABLE `controller` (
   `nm_modulo` varchar(50) DEFAULT NULL,
   `cs_exibir_combo` char(1) DEFAULT 'S',
   PRIMARY KEY (`id_controller`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,14 @@ CREATE TABLE `controller` (
 
 LOCK TABLES `controller` WRITE;
 /*!40000 ALTER TABLE `controller` DISABLE KEYS */;
-INSERT INTO `controller` VALUES (1,'action-action','Actions','S'),(2,'application-index','Aplicação','N'),(3,'controller-controller','Controller','S'),(4,'infra-infra','Infraestrutura','S'),(5,'perfil-perfil','Perfil','S'),(6,'permissao-permissao','Gerenciador de Permissao','S'),(7,'pesquisar-pesquisar','Pesquisar','S'),(8,'principal-principal','Principal','S'),(9,'usuario-usuario','Usuario','S'),(10,'solicitacao-solicitacao','Solicitacao','S'),(11,'fornecedor-fornecedor','Fornecedor','S'),(12,'equipe-equipe','Equipe','S'),(13,'departamento-departamento','Departamento','S'),(14,'funcao-funcao','Funcao','S'),(15,'status-status','Status','S'),(16,'tipo_servico-tiposervico','Tipo de Servico','S'),(17,'planejamento-planejamento','Planejamento','S'),(18,'cronograma-cronograma','Cronograma','S'),(19,'atendimento-atendimento','Atendimento','S');
+INSERT INTO `controller` VALUES (1,'action-action','Actions','S'),(2,'application-index','Aplicação','N'),
+(3,'controller-controller','Controller','S'),(4,'infra-infra','Infraestrutura','S'),(5,'perfil-perfil','Perfil','S'),
+(6,'permissao-permissao','Gerenciador de Permissao','S'),(7,'pesquisar-pesquisar','Pesquisar','S'),(8,'principal-principal','Principal','S'),
+(9,'usuario-usuario','Usuario','S'),(10,'solicitacao-solicitacao','Solicitacao','S'),(11,'fornecedor-fornecedor','Fornecedor','S'),
+(12,'equipe-equipe','Equipe','S'),(13,'departamento-departamento','Departamento','S'),(14,'funcao-funcao','Funcao','S'),(15,'status-status','Status','S'),
+(16,'tipo_servico-tiposervico','Tipo de Servico','S'),(17,'planejamento-planejamento','Planejamento','S'),(18,'cronograma-cronograma','Cronograma','S'),
+(19,'atendimento-atendimento','Atendimento','S'),
+(20,'unidade-unidade','Unidade','S');
 /*!40000 ALTER TABLE `controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -562,7 +569,9 @@ CREATE TABLE `perfil_controller_action` (
 
 LOCK TABLES `perfil_controller_action` WRITE;
 /*!40000 ALTER TABLE `perfil_controller_action` DISABLE KEYS */;
-INSERT INTO `perfil_controller_action` VALUES (1,9,1,1),(2,2,1,1),(3,9,3,1),(4,9,6,1),(5,9,8,1),(6,2,1,2),(7,9,7,1),(8,9,12,1),(9,9,13,1),(10,9,1,1),(11,9,1,2),(12,9,2,1),(13,8,1,1),(14,5,1,1),(15,5,2,1),(16,5,3,1),(17,9,14,1),(18,3,1,1),(19,3,2,1),(20,3,3,1),(21,3,4,1),(22,3,14,1),(23,1,1,1),(24,1,2,1),(25,1,3,1),(26,1,4,1),(27,1,14,1),(28,6,1,1),(29,6,2,1),(30,6,3,1),(31,6,4,1),(32,6,14,1),(33,6,16,1),(34,4,1,1),(35,8,1,2),(36,8,1,3),(38,7,2,1),(39,7,4,1),(40,7,3,1),(41,7,1,1),(42,7,14,1),(43,7,19,1),(44,7,2,2),(45,7,4,2),(46,7,3,2),(47,7,1,2),(48,7,14,2),(49,7,19,2),(50,9,12,2),(51,9,7,2),(52,9,2,2),(53,9,6,2),(54,9,3,2),(55,9,8,2),(56,9,1,2),(57,9,14,2),(58,9,13,2),(59,19,2,1),(60,19,4,1),(61,19,3,1),(62,19,1,1),(63,19,14,1),(64,18,2,1),(65,18,4,1),(66,18,3,1),(67,18,1,1),(68,18,14,1),(69,13,2,1),(70,13,4,1),(71,13,3,1),(72,13,1,1),(73,13,14,1),(74,12,2,1),(75,12,4,1),(76,12,3,1),(77,12,1,1),(78,12,14,1),(79,11,2,1),(80,11,4,1),(81,11,3,1),(82,11,1,1),(83,11,14,1),(84,14,2,1),(85,14,4,1),(86,14,3,1),(87,14,1,1),(88,14,14,1),(89,17,2,1),(90,17,4,1),(91,17,3,1),(92,17,1,1),(93,17,14,1),(94,10,2,1),(95,10,4,1),(96,10,3,1),(97,10,1,1),(98,10,14,1),(99,15,2,1),(100,15,4,1),(101,15,3,1),(102,15,1,1),(103,15,14,1),(104,16,2,1),(105,16,4,1),(106,16,3,1),(107,16,1,1),(108,16,14,1);
+INSERT INTO `perfil_controller_action` VALUES (1,9,1,1),(2,2,1,1),(3,9,3,1),(4,9,6,1),(5,9,8,1),(6,2,1,2),(7,9,7,1),(8,9,12,1),(9,9,13,1),(10,9,1,1),(11,9,1,2),(12,9,2,1),(13,8,1,1),(14,5,1,1),(15,5,2,1),(16,5,3,1),(17,9,14,1),(18,3,1,1),(19,3,2,1),(20,3,3,1),(21,3,4,1),(22,3,14,1),(23,1,1,1),(24,1,2,1),(25,1,3,1),(26,1,4,1),(27,1,14,1),(28,6,1,1),(29,6,2,1),(30,6,3,1),(31,6,4,1),(32,6,14,1),(33,6,16,1),(34,4,1,1),(35,8,1,2),(36,8,1,3),(38,7,2,1),(39,7,4,1),(40,7,3,1),(41,7,1,1),(42,7,14,1),(43,7,19,1),(44,7,2,2),(45,7,4,2),(46,7,3,2),(47,7,1,2),(48,7,14,2),(49,7,19,2),(50,9,12,2),(51,9,7,2),(52,9,2,2),(53,9,6,2),(54,9,3,2),(55,9,8,2),(56,9,1,2),(57,9,14,2),(58,9,13,2),(59,19,2,1),(60,19,4,1),(61,19,3,1),(62,19,1,1),(63,19,14,1),(64,18,2,1),(65,18,4,1),(66,18,3,1),(67,18,1,1),(68,18,14,1),(69,13,2,1),(70,13,4,1),(71,13,3,1),(72,13,1,1),(73,13,14,1),(74,12,2,1),(75,12,4,1),(76,12,3,1),(77,12,1,1),(78,12,14,1),(79,11,2,1),(80,11,4,1),(81,11,3,1),(82,11,1,1),(83,11,14,1),(84,14,2,1),(85,14,4,1),(86,14,3,1),(87,14,1,1),(88,14,14,1),(89,17,2,1),(90,17,4,1),(91,17,3,1),(92,17,1,1),(93,17,14,1),(94,10,2,1),(95,10,4,1),(96,10,3,1),(97,10,1,1),(98,10,14,1),(99,15,2,1),(100,15,4,1),(101,15,3,1),(102,15,1,1),(103,15,14,1),
+(104,16,2,1),(105,16,4,1),(106,16,3,1),(107,16,1,1),(108,16,14,1),
+(109,20,2,1),(110,20,4,1),(111,20,3,1),(112,20,1,1),(113,20,14,1);
 /*!40000 ALTER TABLE `perfil_controller_action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -692,7 +701,7 @@ CREATE TABLE `solicitacao` (
   `id_email` int(11) DEFAULT NULL,
   `id_departamento` int(11) DEFAULT NULL,
   `id_usuario_cadastro` int(11) DEFAULT NULL,
-  `id_status` int(11) DEFAULT NULL,
+  `id_status` int(11) DEFAULT '1',
   `id_unidade` int(11) DEFAULT NULL,
   `dt_data_criacao` datetime DEFAULT NULL,
   `dt_data_final_atendimento` datetime DEFAULT NULL,
@@ -773,7 +782,17 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'Aprovado'),(2,'Atrasado'),(3,'Cancelado'),(4,'Concluído'),(5,'Em Aprovação'),(6,'Em Execução'),(7,'Em Produção'),(8,'No Planejamento'),(9,'Retornado para Ajustes');
+INSERT INTO `status` VALUES
+(1,'Nova Demanda'),
+(2,'Aprovado'),
+(3,'Atrasado'),
+(4,'Cancelado'),
+(5,'Concluído'),
+(6,'Em Aprovação'),
+(7,'Em Execução'),
+(8,'Em Produção'),
+(9,'No Planejamento'),
+(10,'Retornado para Ajustes');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
