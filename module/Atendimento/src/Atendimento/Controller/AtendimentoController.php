@@ -44,10 +44,7 @@ class AtendimentoController extends AbstractCrudController
             '2' => [
                 'filter' => "atendimento.nm_diretor_arte LIKE ?",
             ],
-            '3' => [
-                'filter' => "atendimento.nm_redator LIKE ?",
-            ],
-            '4' => NULL,
+            '3' => NULL,
         ];
 
 

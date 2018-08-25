@@ -13,6 +13,9 @@ class FuncaoForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('funcaoform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_funcao")->required(true)->label("Nome da Função");
+
         $this->formObject = $objForm;
     }
 
