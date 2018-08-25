@@ -13,6 +13,9 @@ class UnidadeForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('unidadeform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_unidade")->required(true)->label("Nome da Unidade");
+
         $this->formObject = $objForm;
     }
 

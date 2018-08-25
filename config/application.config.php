@@ -49,6 +49,7 @@ return array(
         'SolicitacaoTipoServico',
         'Status',
         'TipoServico',
+        'Unidade',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
