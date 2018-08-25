@@ -9,7 +9,7 @@ class EquipeTable extends AbstractEstruturaTable{
     public $table = 'equipe';
     public $campos = [
 
-        'id_atendimento'  => 'id',
+        'id_equipe'  => 'id',
         'nm_responsavel' => 'nm_responsavel',
 
     ];

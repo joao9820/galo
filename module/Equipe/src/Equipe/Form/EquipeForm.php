@@ -13,6 +13,9 @@ class EquipeForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('equipeform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_responsavel")->required(true)->label("Nome do Membro");
+
         $this->formObject = $objForm;
     }
 
