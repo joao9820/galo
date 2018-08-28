@@ -75,8 +75,8 @@
 
                         <td class="text-center">
                                 <span class="btn-group" style="width: 150px;">
-                                    <?= \Estrutura\Service\HtmlHelper::botaoAlterarCustomizado($this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))), 'Modificar Solicitação') ?>
                                     <?= \Estrutura\Service\HtmlHelper::botaoAlterar($this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))), 'Modificar Solicitação') ?>
+                                    <?= \Estrutura\Service\HtmlHelper::botaoAlterarCustomizado($this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))), 'Modificar Solicitação') ?>
                                     <?= \Estrutura\Service\HtmlHelper::botaoExcluir($this->url('navegacao', array('controller' => $controller, 'action' => 'excluir', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao'])))) ?>
                                 </span>
                         </td>

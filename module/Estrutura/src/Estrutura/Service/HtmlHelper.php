@@ -37,7 +37,7 @@ class HtmlHelper{
 
     public static function botaoAlterarCustomizado($url, $title='Modificar'){
         $attributos = ['class'=>'btn-alterar btn-xs btn-alterar-customizado', 'id'=>'botaomodificar'];
-        return self::botaoLink($url, 'glyphicon glyphicon-user', $attributos, $title);
+        return self::botaoLink($url, 'glyphicon glyphicon', $attributos, $title);
     }
 
     public static function botaoDownload($url, $title='Ação', $id = 'botaoacao', $icone_bootstrap = 'glyphicon glyphicon-screenshot', $classe = 'btn btn-default'){
