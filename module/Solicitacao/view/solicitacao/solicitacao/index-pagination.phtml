@@ -10,6 +10,7 @@
                 <th class="text-center">Departamento</th>
                 <th class="text-center">Solicitante</th>
                 <th class="text-center">Status</th>
+                <th class="text-center">Tramitação</th>
                 <th class="text-center">Ações</th>
             </tr>
             </thead>
@@ -20,10 +21,11 @@
                 <th class="text-center">Departamento</th>
                 <th class="text-center">Solicitante</th>
                 <th class="text-center">Status</th>
+                <th class="text-center">Tramitação</th>
                 <th class="text-center">Ações</th>
             </tr>
             <tr>
-                <th colspan="6" class="ts-pager form-horizontal">
+                <th colspan="7" class="ts-pager form-horizontal">
                     <?php
                     echo $this->paginationControl(
                         $paginator, 'Sliding', 'partials/pagination.phtml', [
@@ -71,12 +73,152 @@
                         <td class="text-center"><?= \Estrutura\Helpers\String::nomeMaiusculo($solicitacao['nm_unidade']) ?></td>
                         <td class="text-center"><?= \Estrutura\Helpers\String::nomeMaiusculo($solicitacao['nm_departamento']) ?></td>
                         <td class="text-center"><?= \Estrutura\Helpers\String::nomeMaiusculo($solicitacao['nm_solicitante']) ?></td>
-                        <td class="text-center"><?= \Estrutura\Helpers\String::nomeMaiusculo($solicitacao['nm_status']) ?></td>
+                        <td class="text-center">
+                            <?php
+                            if ($solicitacao['nm_status'] == 'Em Produção') { ?>
+                                <span class='label label-default'>Em Produção</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Em Aprovação') { ?>
+                                <span class='label label-default'>Em Aprovação</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Aprovado') { ?>
+                                <span class='label label-info'>Aprovado</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Concluído') { ?>
+                                <span class='label label-success'>Concluído</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Atrasado') { ?>
+                                <span class='label label-danger'>Atrasado</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Cancelado') { ?>
+                                <span class='label label-danger'>Cancelado</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Retornado Para Ajustes') { ?>
+                                <span class='label label-danger'>Retornado Para Ajustes</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Nova Demanda') { ?>
+                                <span class='label label-warning'>Nova Demanda</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'No Planejamento') { ?>
+                                <span class='label label-primary'>No Planejamento</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Em Execução') { ?>
+                                <span class='label label-success'>Em Execução</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Retornado Para Ajustes') { ?>
+                                <span class='label label-warning'>Retornado Para Ajustes</span>
+                                <?php
+                            }
+                            ?>
+                        </td>
+                        <td class="text-center">
+                            <span class="btn-group" style="width: 250px;">
+                            <?php
+                            if ($solicitacao['nm_status'] == 'I' || $solicitacao['nm_status'] == 'R') { ?>
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'enviar-para-validacao', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_plano_mudanca']))),
+                                    'Enviar para Validação',
+                                    'enviar_para_validacao',
+                                    'glyphicon glyphicon-share-alt',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'G') { ?>
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'enviar-para-cancelamento', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Cancelar Plano de Mudança',
+                                    'cancelar_plano_mudanca',
+                                    'glyphicon glyphicon-fire',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'devolver-para-ajustes', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Solicitar Adequações',
+                                    'devolver_para_adequacao_avaliador',
+                                    'glyphicon glyphicon-wrench',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'aprovar-plano-sem-gerar-ordem-servico', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Aprovar plano de mudança (Não gera ordem de serviço)',
+                                    'aprovar_plano_mudanca',
+                                    'glyphicon glyphicon-send',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'aprovar-plano-mudanca', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Aprovar e gerar ordem de serviço',
+                                    'aprovar_plano_mudanca',
+                                    'glyphicon glyphicon-usd',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Cancelado') { ?>
+                                <span title='Plano de Mudança Aprovado' class='label label-danger'>Cancelado</span>
+                                <!-- Quando a mudança for aprovada, Ninguem mais poderá alterar seu conteúdo-->
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Concluído') { ?>
+                                <span title='Plano de Mudança Concluído' class='label label-success'>Concluído</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Em Aprovação') { ?>
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'enviar-para-cancelamento', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Cancelar Solicitação',
+                                    'cancelar_solicitacao',
+                                    'glyphicon glyphicon-fire',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'enviar-para-aprovacao', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Ativar Solicitação e Enviar para Aprovação',
+                                    'enviar_para_aprovacao',
+                                    'glyphicon glyphicon-ok-sign',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'N') { ?>
+                                <span title='Plano de Mudança Não Aprovada'
+                                      class='label label-danger'>Não Aprovada</span>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'No Planejamento') { ?>
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'devolver-para-correcao', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Devolver para Correções',
+                                    'devolver_para_correcoes',
+                                    'glyphicon glyphicon-thumbs-down',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'enviar-para-aprovacao', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Enviar para Aprovação',
+                                    'enviar_para_aprovacao',
+                                    'glyphicon glyphicon-ok-sign',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+                                <?php
+                            } elseif ($solicitacao['nm_status'] == 'Retornado Para Ajustes') { ?>
+                                <?= \Estrutura\Service\HtmlHelper::botaoAcao(
+                                    $this->url('navegacao', array('controller' => $controller, 'action' => 'devolver-para-correcao', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))),
+                                    'Devolver para Correções',
+                                    'devolver_para_correcoes',
+                                    'glyphicon glyphicon-thumbs-down',
+                                    'btn-alterar btn-xs btn-alterar-customizado'
+                                ) ?>
+                                <?php
+                            }
+                            ?>
+                            </span>
+                        </td>
 
                         <td class="text-center">
                                 <span class="btn-group" style="width: 150px;">
                                     <?= \Estrutura\Service\HtmlHelper::botaoAlterar($this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))), 'Modificar Solicitação') ?>
-                                    <?= \Estrutura\Service\HtmlHelper::botaoAlterarCustomizado($this->url('navegacao', array('controller' => $controller, 'action' => 'cadastro', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao']))), 'Modificar Solicitação') ?>
                                     <?= \Estrutura\Service\HtmlHelper::botaoExcluir($this->url('navegacao', array('controller' => $controller, 'action' => 'excluir', 'id' => Estrutura\Helpers\Cript::enc($solicitacao['id_solicitacao'])))) ?>
                                 </span>
                         </td>

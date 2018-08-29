@@ -52,4 +52,10 @@ class HtmlHelper{
         }
         return $string;
     }
+
+    public static function botaoAcao($url, $title='Ação', $id = 'botaoacao', $icone_bootstrap = 'glyphicon glyphicon-screenshot', $classe = 'btn btn-default'){
+        $attributos = ['class'=>$classe, 'id'=>$id];
+        #$attributos = ['class'=>'btn-alterar btn-xs btn-alterar-customizado', 'id'=>$id];
+        return self::botaoLink($url, $icone_bootstrap, $attributos, $title);
+    }
 }
