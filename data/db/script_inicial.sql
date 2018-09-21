@@ -75,6 +75,7 @@ CREATE TABLE `atendimento` (
   `ar_arquivo` varchar(200) DEFAULT NULL,
   `tx_informacao_complementar` text,
   `id_solicitacao` bigint(20) NOT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_atendimento`),
   KEY `FK_Reference_35` (`id_solicitacao`),
   CONSTRAINT `FK_Reference_35` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`)
@@ -181,6 +182,7 @@ CREATE TABLE `cronograma` (
   `dt_data_fim` datetime DEFAULT NULL,
   `id_equipe` bigint(20) DEFAULT NULL,
   `ar_arquivo` varchar(200) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_cronograma`),
   KEY `FK_Reference_51` (`id_equipe`),
   CONSTRAINT `FK_Reference_51` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`)
@@ -206,6 +208,7 @@ DROP TABLE IF EXISTS `departamento`;
 CREATE TABLE `departamento` (
   `id_departamento` int(11) NOT NULL,
   `nm_departamento` varchar(150) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_departamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -216,7 +219,11 @@ CREATE TABLE `departamento` (
 
 LOCK TABLES `departamento` WRITE;
 /*!40000 ALTER TABLE `departamento` DISABLE KEYS */;
-INSERT INTO `departamento` VALUES (1,'ASCOM'),(2,'CPS'),(3,'DAES'),(4,'DAF'),(5,'ECJUS-DIREÇÃO'),(6,'ECJUS-DIREITO'),(7,'ECJUS-SSOCIAL'),(8,'ECSAU-DIREÇÃO'),(9,'ECSAU-ED.FIS'),(10,'ECSAU-FISIO'),(11,'ECSAU-PSICO'),(12,'ENEG-ADM'),(13,'ENEG-CICO'),(14,'ENEG-CSPP'),(15,'ENEG-DIREÇÃO'),(16,'ENEG-GP'),(17,'ENEG-LOG'),(18,'ENEG-MKT'),(19,'ENEG-RH'),(20,'ENEG-SEB'),(21,'EPROF-DIREÇÃO'),(22,'EPROF-GEOGRAFIA'),(23,'EPROF-HISTORIA'),(24,'EPROF-LETRAS'),(25,'EPROF-MATEMATICA'),(26,'EPROF-PEDAGOGIA'),(27,'ETEC-DIREÇÃO'),(28,'ETEC-ENG'),(29,'ETEC-TI'),(30,'EXTERNO'),(31,'GALO CANTA'),(32,'INOVE'),(33,'NAM'),(34,'NAPS'),(35,'NDC'),(36,'NEX'),(37,'NPA'),(38,'NPJ'),(39,'POSGRAD');
+INSERT INTO `departamento` VALUES (1,'ASCOM',1),(2,'CPS',1),(3,'DAES',1),(4,'DAF',1),(5,'ECJUS-DIREÇÃO',1),(6,'ECJUS-DIREITO',1),(7,'ECJUS-SSOCIAL',1),
+(8,'ECSAU-DIREÇÃO',1),(9,'ECSAU-ED.FIS',1),(10,'ECSAU-FISIO',1),(11,'ECSAU-PSICO',1),(12,'ENEG-ADM',1),(13,'ENEG-CICO',1),(14,'ENEG-CSPP',1),(15,'ENEG-DIREÇÃO',1),
+(16,'ENEG-GP',1),(17,'ENEG-LOG',1),(18,'ENEG-MKT',1),(19,'ENEG-RH',1),(20,'ENEG-SEB',1),(21,'EPROF-DIREÇÃO',1),(22,'EPROF-GEOGRAFIA',1),(23,'EPROF-HISTORIA',1),
+(24,'EPROF-LETRAS',1),(25,'EPROF-MATEMATICA',1),(26,'EPROF-PEDAGOGIA',1),(27,'ETEC-DIREÇÃO',1),(28,'ETEC-ENG',1),(29,'ETEC-TI',1),(30,'EXTERNO',1),(31,'GALO CANTA',1),
+(32,'INOVE',1),(33,'NAM',1),(34,'NAPS',1),(35,'NDC',1),(36,'NEX',1),(37,'NPA',1),(38,'NPJ',1),(39,'POSGRAD',1);
 /*!40000 ALTER TABLE `departamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,6 +296,7 @@ DROP TABLE IF EXISTS `equipe`;
 CREATE TABLE `equipe` (
   `id_equipe` bigint(20) NOT NULL AUTO_INCREMENT,
   `nm_responsavel` varchar(150) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -313,6 +321,7 @@ CREATE TABLE `equipe_funcao` (
   `id_equipe_funcao` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_equipe` bigint(20) DEFAULT NULL,
   `id_funcao` bigint(20) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_equipe_funcao`),
   KEY `FK_Reference_52` (`id_equipe`),
   KEY `FK_Reference_53` (`id_funcao`),
@@ -405,6 +414,7 @@ CREATE TABLE `fornecedor` (
   `id_telefone_celular` int(11) DEFAULT NULL,
   `id_email` int(11) DEFAULT NULL,
   `id_endereco` int(11) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_fornecedor`),
   KEY `FK_Reference_34` (`id_endereco`),
   KEY `FK_Reference_37` (`id_telefone_fixo`),
@@ -437,6 +447,7 @@ CREATE TABLE `fornecedor_tipo_servico` (
   `id_fornecedor_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
   `id_fornecedor` int(11) DEFAULT NULL,
   `id_tipo_servico` int(11) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_fornecedor_tipo_servico`),
   KEY `FK_Reference_40` (`id_fornecedor`),
   KEY `FK_Reference_48` (`id_tipo_servico`),
@@ -464,6 +475,7 @@ DROP TABLE IF EXISTS `funcao`;
 CREATE TABLE `funcao` (
   `id_funcao` bigint(20) NOT NULL AUTO_INCREMENT,
   `nm_funcao` varchar(150) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_funcao`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -597,6 +609,7 @@ CREATE TABLE `planejamento` (
   `ar_arquivo` varchar(200) DEFAULT NULL,
   `id_solicitacao` bigint(20) DEFAULT NULL,
   `id_cronograma` bigint(20) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_planejamento`),
   KEY `FK_Reference_36` (`id_solicitacao`),
   KEY `FK_Reference_49` (`id_cronograma`),
@@ -707,6 +720,7 @@ CREATE TABLE `solicitacao` (
   `dt_data_final_atendimento` datetime DEFAULT NULL,
   `tx_informacao` text,
   `nr_controle` int(11) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_solicitacao`),
   KEY `FK_Reference_41` (`id_telefone_fixo`),
   KEY `FK_Reference_42` (`id_telefone_celular`),
@@ -745,6 +759,7 @@ CREATE TABLE `solicitacao_tipo_servico` (
   `id_solicitacao_tipo_servico` int(11) NOT NULL,
   `id_solicitacao` bigint(11) DEFAULT NULL,
   `id_tipo_servico` int(11) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_solicitacao_tipo_servico`),
   KEY `FK_Reference_46` (`id_solicitacao`),
   KEY `FK_Reference_47` (`id_tipo_servico`),
@@ -772,6 +787,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `nm_status` varchar(150) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -783,16 +799,16 @@ CREATE TABLE `status` (
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
 INSERT INTO `status` VALUES
-(1,'Nova Demanda'),
-(2,'Aprovado'),
-(3,'Atrasado'),
-(4,'Cancelado'),
-(5,'Concluído'),
-(6,'Em Aprovação'),
-(7,'Em Execução'),
-(8,'Em Produção'),
-(9,'No Planejamento'),
-(10,'Retornado para Ajustes');
+(1,'Nova Demanda',1),
+(2,'Aprovado',1),
+(3,'Atrasado',1),
+(4,'Cancelado',1),
+(5,'Concluído',1),
+(6,'Em Aprovação',1),
+(7,'Em Execução',1),
+(8,'Em Produção',1),
+(9,'No Planejamento',1),
+(10,'Retornado para Ajustes',1);
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -837,6 +853,7 @@ DROP TABLE IF EXISTS `tipo_servico`;
 CREATE TABLE `tipo_servico` (
   `id_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
   `nm_tipo_servico` varchar(150) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_tipo_servico`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -847,7 +864,11 @@ CREATE TABLE `tipo_servico` (
 
 LOCK TABLES `tipo_servico` WRITE;
 /*!40000 ALTER TABLE `tipo_servico` DISABLE KEYS */;
-INSERT INTO `tipo_servico` VALUES (1,'Banner 120x0,80'),(2,'Banner Digital'),(3,'Campanha Completa'),(4,'Cartaz A3'),(5,'Cartaz A4'),(6,'Faixa Horizontal'),(7,'Folder'),(8,'Identidade Visual(SIV/MIV)'),(9,'KitEvento 1 (FaixaHorizontal, Banner1.20x80cm, folder, bannerdigital)'),(10,'KitEvento 2 (Púlpito, Banner1.20x80cm, bannerdigital)'),(11,'KitEvento 3 (Púlpito, FaixaHorizontal, 1.20x80cm, cartazA3, folder, bannerdigital)'),(12,'KitEvento 4 (Púlpito, FaixaHorizontal, cartazA3, bannerdigital)'),(13,'Panfleto'),(14,'Púlpito'),(15,'Revista Digital'),(16,'Revista Impressa'),(17,'Vídeo Institucional'),(18,'Vinheta Animada');
+INSERT INTO `tipo_servico` VALUES (1,'Banner 120x0,80',1),(2,'Banner Digital',1),(3,'Campanha Completa',1),(4,'Cartaz A3',1),(5,'Cartaz A4',1),(6,'Faixa Horizontal',1),
+(7,'Folder',1),(8,'Identidade Visual(SIV/MIV)',1),(9,'KitEvento 1 (FaixaHorizontal, Banner1.20x80cm, folder, bannerdigital)',1),
+(10,'KitEvento 2 (Púlpito, Banner1.20x80cm, bannerdigital)',1),(11,'KitEvento 3 (Púlpito, FaixaHorizontal, 1.20x80cm, cartazA3, folder, bannerdigital)',1),
+(12,'KitEvento 4 (Púlpito, FaixaHorizontal, cartazA3, bannerdigital)',1),(13,'Panfleto',1),(14,'Púlpito',1),(15,'Revista Digital',1),(16,'Revista Impressa',1),
+(17,'Vídeo Institucional',1),(18,'Vinheta Animada',1);
 /*!40000 ALTER TABLE `tipo_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -895,7 +916,7 @@ CREATE TABLE `tipo_usuario` (
 
 LOCK TABLES `tipo_usuario` WRITE;
 /*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
-INSERT INTO `tipo_usuario` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Secretaría');
+INSERT INTO `tipo_usuario` VALUES (1,'Administrador'),(2,'Coordenação'),(3,'Departamentos');
 /*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -909,6 +930,7 @@ DROP TABLE IF EXISTS `unidade`;
 CREATE TABLE `unidade` (
   `id_unidade` int(11) NOT NULL AUTO_INCREMENT,
   `nm_unidade` varchar(150) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_unidade`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -919,7 +941,8 @@ CREATE TABLE `unidade` (
 
 LOCK TABLES `unidade` WRITE;
 /*!40000 ALTER TABLE `unidade` DISABLE KEYS */;
-INSERT INTO `unidade` VALUES (1,'Uniprojeção - CAMPUS I'),(2,'Uniprojeção - CAMPUS II'),(3,'FacPro - Ceilandia'),(4,'FacPro - Guará'),(5,'FacPro - Sobradinho'),(6,'Colégio Projeção - Guará'),(7,'Colégio Projeção - Taguatinga'),(8,'Colégio Projeção - Tag.Norte'),(9,'CEPROJ');
+INSERT INTO `unidade` VALUES (1,'Uniprojeção - CAMPUS I',1),(2,'Uniprojeção - CAMPUS II',1),(3,'FacPro - Ceilandia',1),(4,'FacPro - Guará',1),
+(5,'FacPro - Sobradinho',1),(6,'Colégio Projeção - Guará',1),(7,'Colégio Projeção - Taguatinga',1),(8,'Colégio Projeção - Tag.Norte',1),(9,'CEPROJ',1);
 /*!40000 ALTER TABLE `unidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
