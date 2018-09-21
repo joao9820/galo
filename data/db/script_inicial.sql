@@ -75,7 +75,7 @@ CREATE TABLE `atendimento` (
   `ar_arquivo` varchar(200) DEFAULT NULL,
   `tx_informacao_complementar` text,
   `id_solicitacao` bigint(20) NOT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_atendimento`),
   KEY `FK_Reference_35` (`id_solicitacao`),
   CONSTRAINT `FK_Reference_35` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacao` (`id_solicitacao`)
@@ -182,7 +182,7 @@ CREATE TABLE `cronograma` (
   `dt_data_fim` datetime DEFAULT NULL,
   `id_equipe` bigint(20) DEFAULT NULL,
   `ar_arquivo` varchar(200) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_cronograma`),
   KEY `FK_Reference_51` (`id_equipe`),
   CONSTRAINT `FK_Reference_51` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`)
@@ -208,7 +208,7 @@ DROP TABLE IF EXISTS `departamento`;
 CREATE TABLE `departamento` (
   `id_departamento` int(11) NOT NULL,
   `nm_departamento` varchar(150) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_departamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -296,7 +296,7 @@ DROP TABLE IF EXISTS `equipe`;
 CREATE TABLE `equipe` (
   `id_equipe` bigint(20) NOT NULL AUTO_INCREMENT,
   `nm_responsavel` varchar(150) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_equipe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -321,7 +321,7 @@ CREATE TABLE `equipe_funcao` (
   `id_equipe_funcao` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_equipe` bigint(20) DEFAULT NULL,
   `id_funcao` bigint(20) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_equipe_funcao`),
   KEY `FK_Reference_52` (`id_equipe`),
   KEY `FK_Reference_53` (`id_funcao`),
@@ -414,7 +414,7 @@ CREATE TABLE `fornecedor` (
   `id_telefone_celular` int(11) DEFAULT NULL,
   `id_email` int(11) DEFAULT NULL,
   `id_endereco` int(11) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_fornecedor`),
   KEY `FK_Reference_34` (`id_endereco`),
   KEY `FK_Reference_37` (`id_telefone_fixo`),
@@ -447,7 +447,7 @@ CREATE TABLE `fornecedor_tipo_servico` (
   `id_fornecedor_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
   `id_fornecedor` int(11) DEFAULT NULL,
   `id_tipo_servico` int(11) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_fornecedor_tipo_servico`),
   KEY `FK_Reference_40` (`id_fornecedor`),
   KEY `FK_Reference_48` (`id_tipo_servico`),
@@ -475,7 +475,7 @@ DROP TABLE IF EXISTS `funcao`;
 CREATE TABLE `funcao` (
   `id_funcao` bigint(20) NOT NULL AUTO_INCREMENT,
   `nm_funcao` varchar(150) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_funcao`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -609,7 +609,7 @@ CREATE TABLE `planejamento` (
   `ar_arquivo` varchar(200) DEFAULT NULL,
   `id_solicitacao` bigint(20) DEFAULT NULL,
   `id_cronograma` bigint(20) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_planejamento`),
   KEY `FK_Reference_36` (`id_solicitacao`),
   KEY `FK_Reference_49` (`id_cronograma`),
@@ -720,7 +720,7 @@ CREATE TABLE `solicitacao` (
   `dt_data_final_atendimento` datetime DEFAULT NULL,
   `tx_informacao` text,
   `nr_controle` int(11) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_solicitacao`),
   KEY `FK_Reference_41` (`id_telefone_fixo`),
   KEY `FK_Reference_42` (`id_telefone_celular`),
@@ -759,7 +759,7 @@ CREATE TABLE `solicitacao_tipo_servico` (
   `id_solicitacao_tipo_servico` int(11) NOT NULL,
   `id_solicitacao` bigint(11) DEFAULT NULL,
   `id_tipo_servico` int(11) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_solicitacao_tipo_servico`),
   KEY `FK_Reference_46` (`id_solicitacao`),
   KEY `FK_Reference_47` (`id_tipo_servico`),
@@ -787,7 +787,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `nm_status` varchar(150) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -853,7 +853,7 @@ DROP TABLE IF EXISTS `tipo_servico`;
 CREATE TABLE `tipo_servico` (
   `id_tipo_servico` int(11) NOT NULL AUTO_INCREMENT,
   `nm_tipo_servico` varchar(150) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_tipo_servico`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -930,7 +930,7 @@ DROP TABLE IF EXISTS `unidade`;
 CREATE TABLE `unidade` (
   `id_unidade` int(11) NOT NULL AUTO_INCREMENT,
   `nm_unidade` varchar(150) DEFAULT NULL,
-  `cs_ativo` char(1) DEFAULT NULL,
+  `cs_ativo` char(1) DEFAULT '1',
   PRIMARY KEY (`id_unidade`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
