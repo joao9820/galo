@@ -13,6 +13,9 @@ class CronogramaForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('cronogramaform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_acao")->required(true)->label("Nome da ação");
+
         $this->formObject = $objForm;
     }
 

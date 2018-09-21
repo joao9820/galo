@@ -13,6 +13,11 @@ class PlanejamentoForm extends AbstractForm{
         $this->inputFilter = new InputFilter();
         $objForm = new FormObject('planejamentoform',$this,$this->inputFilter);
 
+        $objForm->hidden("id")->required(false)->label("Id");
+        $objForm->text("nm_problema")->required(true)->label("Nome do problema");
+        $objForm->text("nm_recurso")->required(true)->label("Recurso");
+        $objForm->text("nm_tom_campanha")->required(true)->label("Tom da Campanha");
+
         $this->formObject = $objForm;
     }
 
